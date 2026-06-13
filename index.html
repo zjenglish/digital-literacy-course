@@ -1,0 +1,2976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broadcasting & Media Literacy — Digital Literacy Course Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ══════════════════════════════════════════════════════
+       ⛔  HARD LOCK — rev.jpg must NEVER be cropped.
+           object-fit: contain is enforced with !important.
+           Do not remove this rule. Do not override it.
+           See CLAUDE.md → Hard Rules.
+    ══════════════════════════════════════════════════════ */
+    img[src*="rev.jpg"] {
+      object-fit: contain !important;
+      object-position: center center !important;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: #1a1a2e;
+      background: #ffffff;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: linear-gradient(140deg, #0d1b3e 0%, #1a3566 55%, #0f4c8a 100%);
+      color: white;
+      padding: 64px 80px 48px;
+      position: relative;
+    }
+
+    .cover-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #e8b84b;
+      margin-bottom: 16px;
+    }
+
+    .cover h1 {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      max-width: calc(100% - 220px);
+    }
+
+    .cover-logos {
+      position: absolute;
+      top: 40px;
+      right: 80px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      background: white;
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover h1 em {
+      font-style: normal;
+      color: #e8b84b;
+    }
+
+    .cover .subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 32px;
+      max-width: 620px;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cover-meta-item {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .cover-meta-item strong {
+      display: block;
+      font-size: 13px;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ── GOLD BAR ── */
+    .gold-bar { height: 5px; background: #e8b84b; }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 56px 48px 64px;
+    }
+
+    /* ── SECTION LABEL — TERMINAL PROMPT BAR ── */
+    .section-label {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e8b84b;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 4px),
+        linear-gradient(180deg, #1a2d4a 0%, #0d1b3e 100%);
+      padding: 11px 16px 11px 14px;
+      margin: 48px 0 20px;
+      border-bottom: none;
+      border-left: 4px solid #4ade80;
+    }
+    .section-label::before {
+      content: '▶ ';
+      color: #4ade80;
+      font-size: 9px;
+      vertical-align: middle;
+    }
+    .section-label::after {
+      content: '_';
+      color: #4ade80;
+      margin-left: 3px;
+      animation: cursor-blink 1s step-end infinite;
+    }
+
+    .section-label:first-child { margin-top: 0; }
+
+    /* links inside dark section-label bar */
+    .section-label a,
+    .section-link {
+      color: rgba(232, 184, 75, 0.75);
+      text-decoration: none;
+    }
+    .section-label a:hover,
+    .section-link:hover {
+      color: #e8b84b;
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0d1b3e;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    p { margin-bottom: 14px; color: #2d2d2d; }
+
+    /* ── LEAD ── */
+    .lead {
+      font-size: 15px;
+      font-weight: 400;
+      color: #1a1a2e;
+      border-left: 4px solid #e8b84b;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    /* ── STRANDS GRID ── */
+    .strands {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0 8px;
+    }
+
+    .strand {
+      background: #f5f7fc;
+      border-left: 4px solid #0d1b3e;
+      padding: 16px 18px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .strand.accent { border-left-color: #e8b84b; }
+
+    .strand.wide { grid-column: span 2; }
+
+    .strand-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #0d1b3e;
+      margin-bottom: 5px;
+    }
+
+    .strand p { font-size: 13px; margin: 0; color: #444; }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      border-left: 3px solid #e8b84b;
+      padding-left: 28px;
+      margin: 20px 0;
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 26px;
+    }
+
+    .tl-item:last-child { margin-bottom: 0; }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #e8b84b;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px #e8b84b;
+    }
+
+    .tl-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0d1b3e;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .tl-item p { font-size: 13px; margin: 0; color: #444; }
+
+    /* ── UNITS ── */
+    .units { margin: 20px 0; }
+
+    .unit-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid #eef0f4;
+    }
+
+    .unit-row:last-child { border-bottom: none; }
+
+    .unit-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #0d1b3e;
+      color: #e8b84b;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .unit-body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0d1b3e;
+      margin-bottom: 2px;
+    }
+
+    .unit-body p { font-size: 12px; margin: 0; color: #666; }
+
+    /* ── STANDARDS TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+
+    thead th {
+      background: #0d1b3e;
+      color: white;
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #eef0f4;
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) td { background: #f9fafc; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge.strong  { background: #d4edda; color: #155724; }
+    .badge.partial { background: #fff3cd; color: #7a5800; }
+    .badge.gap     { background: #f8d7da; color: #721c24; }
+
+    /* ── TOOLS ── */
+    .tools-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .tool {
+      background: #0d1b3e;
+      color: #e8b84b;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .partners {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    /* ── STUDIO GRID ── */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .studio-card {
+      border: 1px solid #e0e4ef;
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .studio-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0d1b3e;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e8b84b;
+    }
+
+    .studio-items {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .studio-item {
+      font-size: 12px;
+      color: #2d2d2d;
+      padding: 2px 0;
+    }
+
+    .studio-note {
+      font-size: 12px;
+      color: #444;
+      background: #f5f6fa;
+      border-left: 3px solid #e8b84b;
+      padding: 10px 14px;
+      margin: 14px 0 18px;
+      border-radius: 0 4px 4px 0;
+      line-height: 1.6;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .callout.blue {
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+    }
+
+    .callout.gold {
+      background: #fffbeb;
+      border: 1px solid #e8b84b;
+    }
+
+    .callout.red {
+      background: #fdf4f3;
+      border: 1px solid #e8b0a8;
+    }
+
+    .callout.red .callout-label { color: #8b1a1a; }
+
+    .callout-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0d1b3e;
+      margin-bottom: 8px;
+    }
+
+    .callout p { font-size: 13px; margin: 0; line-height: 1.6; color: #333; }
+
+    /* ── SPOTIFY CARD ── */
+    .spotify-card {
+      background: #0d1b3e;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .spotify-icon {
+      background: #1DB954;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .spotify-body { flex: 1; min-width: 200px; }
+
+    .spotify-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #1DB954;
+      margin-bottom: 4px;
+    }
+
+    .spotify-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .spotify-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 10px;
+    }
+
+    .spotify-btn {
+      display: inline-block;
+      background: #1DB954;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .spotify-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      max-width: 260px;
+      line-height: 1.5;
+    }
+
+    /* ── PODCAST SCREENSHOT ── */
+    .podcast-screenshot {
+      margin: 24px 0;
+    }
+
+    .podcast-screenshot img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .podcast-screenshot figcaption {
+      font-size: 11px;
+      color: #888;
+      margin-top: 8px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ── FUTURE CARDS ── */
+    .future-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .future-card {
+      background: #0d1b3e;
+      color: white;
+      padding: 20px 18px;
+      border-radius: 8px;
+    }
+
+    .future-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #e8b84b;
+      margin-bottom: 8px;
+    }
+
+    .future-card p { font-size: 12px; color: rgba(255,255,255,0.78); margin: 0; line-height: 1.55; }
+
+    /* ── COURSE DOCS ── */
+    .docs-section {
+      background: #f5f7fc;
+      border-top: 3px solid #e8b84b;
+      padding: 40px 80px 48px;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .docs-group h5 {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0d1b3e;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #d8dce8;
+    }
+
+    .docs-group ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .docs-group li {
+      margin-bottom: 8px;
+    }
+
+    .docs-group a {
+      font-size: 13px;
+      color: #0d1b3e;
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .docs-group a:hover { color: #0f4c8a; text-decoration: underline; }
+
+    .doc-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── INLINE LINKS ── */
+    .text-link {
+      color: #0d1b3e;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .text-link:hover { text-decoration: underline; }
+
+    .section-link {
+      font-size: 10px;
+      font-weight: 600;
+      color: #0f4c8a;
+      text-transform: none;
+      letter-spacing: 0;
+      border-bottom: 1px solid #0f4c8a;
+      text-decoration: none;
+    }
+    .section-link:hover { opacity: 0.75; }
+
+    /* ── SECTION LABEL VARIANTS ── */
+    .section-label.flush { margin-top: 0; }
+
+    .docs-intro {
+      font-size: 13px;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    .docs-subhead {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0d1b3e;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #d8dce8;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #f5f7fc;
+      border-top: 1px solid #e4e7ef;
+      padding: 20px 80px;
+      font-size: 11px;
+      color: #888;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ── STICKY NAV ── */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0d1b3e;
+      padding: 0 80px;
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #e8b84b;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .sticky-nav a {
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .sticky-nav a:hover {
+      color: #e8b84b;
+      border-bottom-color: #e8b84b;
+    }
+
+    /* ── SCHOOL PHOTO STRIP ── */
+    .school-strip {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .school-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+      filter: brightness(0.6);
+    }
+
+    .school-strip-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 80px;
+      background: linear-gradient(90deg, rgba(13,27,62,0.7) 40%, transparent);
+    }
+
+    .school-strip-text {
+      color: white;
+    }
+
+    .school-strip-text h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .school-strip-text p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      margin: 0;
+    }
+
+    /* ── PHOTO GALLERY ── */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .photo-tile {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: zoom-in;
+    }
+
+    .photo-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.3, 1), filter 0.5s cubic-bezier(0.25, 1, 0.3, 1);
+      filter: brightness(0.88);
+    }
+
+    /* delay opening so cursor sweeping past doesn't accidentally fire */
+    .photo-tile:hover img {
+      transform: scale(1.06);
+      filter: brightness(1);
+      transition-delay: 0.12s;
+    }
+
+    .photo-tile-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(13,27,62,0.85));
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 16px 10px 8px;
+      opacity: 0;
+      transition: opacity 0.35s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .photo-tile:hover .photo-tile-label {
+      opacity: 1;
+      transition-delay: 0.12s;
+    }
+
+    /* ── PHOTO FOCUS OVERLAY (lightbox) ── */
+    .photo-focus-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      animation: focusFadeIn 0.18s ease;
+    }
+    @keyframes focusFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .photo-focus-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      animation: focusZoomIn 0.25s cubic-bezier(0.25, 1, 0.3, 1);
+      cursor: default;
+      transition: none;
+    }
+    @keyframes focusZoomIn { from { transform: scale(0.9); opacity: 0.5; } to { transform: scale(1); opacity: 1; } }
+    .photo-focus-caption {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .gallery-caption {
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+      font-style: italic;
+      margin-top: -8px;
+      margin-bottom: 20px;
+    }
+
+    /* ── STUDIO PHOTO ROW ── */
+    .studio-photos {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0 8px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .studio-photos .photo-tile {
+      aspect-ratio: unset;
+      height: 200px;
+      border-radius: 0;
+    }
+
+    .studio-photos .photo-tile:first-child {
+      height: 200px;
+    }
+
+    .studio-photos-mugs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .studio-photos-mugs .photo-tile {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      height: auto;
+    }
+
+    .studio-photos-mugs .photo-tile.rotated img {
+      transform: rotate(90deg) scale(1.3);
+    }
+
+    /* ── DATA CHART EMBED ── */
+    .chart-embed {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+      margin: 20px 0;
+    }
+
+    .chart-embed img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #e0e4ef;
+    }
+
+    .chart-embed-text p {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    /* ── HOVER ANIMATIONS ── */
+    .strand {
+      transition: transform 0.22s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+    .strand:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(13,27,62,0.1);
+    }
+
+    .studio-card {
+      transition: transform 0.22s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.25, 1, 0.3, 1), border-color 0.22s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+    .studio-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(13,27,62,0.1);
+      border-color: #e8b84b;
+    }
+
+    .future-card {
+      transition: transform 0.22s cubic-bezier(0.25, 1, 0.3, 1), background 0.22s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+    .future-card:hover {
+      transform: translateY(-3px);
+      background: #1a3566;
+    }
+
+    .unit-row {
+      transition: background 0.15s ease;
+    }
+    .unit-row:hover {
+      background: #f8f9fd;
+    }
+
+    .docs-group a {
+      transition: color 0.15s ease, padding-left 0.15s ease;
+    }
+    .docs-group a:hover {
+      color: #0f4c8a;
+      padding-left: 4px;
+    }
+
+    .spotify-btn {
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .spotify-btn:hover {
+      transform: scale(1.04);
+      background: #1ed760;
+    }
+
+    .text-link {
+      transition: opacity 0.15s ease;
+    }
+    .text-link:hover {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+
+    .section-link {
+      transition: color 0.15s ease, opacity 0.15s ease;
+    }
+
+    /* ── IMAGE HOVER ZOOM ── */
+    img {
+      transition: transform 0.22s cubic-bezier(0.25, 1, 0.3, 1);
+      cursor: zoom-in;
+    }
+    img:hover {
+      transform: scale(1.08);
+    }
+    /* lightbox image should not get the generic scale-on-hover */
+    .photo-focus-img:hover {
+      transform: none;
+      cursor: default;
+    }
+
+    /* ── RETRO DISK DRIVE ACCORDION ── */
+    .standards-section {
+      margin: 16px 0;
+      /* Win3.1-style beveled plastic casing */
+      border-top: 2px solid #b0aca4;
+      border-left: 2px solid #a8a49c;
+      border-bottom: 2px solid #1e1c1a;
+      border-right: 2px solid #252320;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow:
+        inset 1px 1px 0 rgba(255,255,255,0.10),
+        inset -1px -1px 0 rgba(0,0,0,0.45),
+        4px 4px 0 #111,
+        6px 6px 0 #2a2a2a;
+    }
+
+    .accordion-header {
+      /* CRT scanlines layered over warm-dark gradient */
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 1px,
+          transparent 1px, transparent 3px
+        ),
+        linear-gradient(180deg, #4e4a44 0%, #32302a 52%, #282420 100%);
+      color: #e0e0e0;
+      padding: 0 14px 0 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      user-select: none;
+      transition: background 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      min-height: 64px;
+      border-bottom: 2px solid #111;
+      border-top: 1px solid #6a6660;
+    }
+
+    /* retro title-bar stripe — alternating-pixel band at very top */
+    .accordion-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: repeating-linear-gradient(
+        90deg,
+        #6e6a64 0px, #6e6a64 2px,
+        #3c3a34 2px, #3c3a34 4px
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* loading bar at bottom — pixel-block phosphor style */
+    .accordion-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px;
+      width: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        #4ade80 0px, #4ade80 6px,
+        #22c55e 6px, #22c55e 8px
+      );
+      transition: width 0.5s ease 0.1s;
+      z-index: 1;
+    }
+
+    .accordion-header.expanded::after { width: 100%; }
+
+    .accordion-header:hover {
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 1px,
+          transparent 1px, transparent 3px
+        ),
+        linear-gradient(180deg, #5a5650 0%, #3e3c36 52%, #323028 100%);
+    }
+
+    /* ── DRIVE BAY WIDGET ── */
+    .disk-drive {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* outer bezel — cream/ivory retro plastic, Win3.1 raised */
+    .disk-drive-bezel {
+      width: 74px;
+      height: 50px;
+      background: linear-gradient(160deg, #dedad0 0%, #c4c0b8 55%, #b4b0a8 100%);
+      border-top: 2px solid #e8e4dc;
+      border-left: 2px solid #d8d4cc;
+      border-bottom: 2px solid #5a5652;
+      border-right: 2px solid #686460;
+      border-radius: 2px;
+      padding: 5px 6px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      position: relative;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        inset 1px 0 0 rgba(255,255,255,0.50),
+        inset 0 -1px 0 rgba(0,0,0,0.35),
+        inset -1px 0 0 rgba(0,0,0,0.20),
+        3px 3px 0 rgba(0,0,0,0.55),
+        4px 4px 0 rgba(0,0,0,0.25);
+    }
+
+    /* the slot */
+    .disk-slot {
+      flex: 1;
+      background: #1a1a1a;
+      border: 1px solid #666;
+      border-radius: 1px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* tray that slides out */
+    .disk-tray {
+      position: absolute;
+      right: 100%;
+      top: 0; bottom: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #c8c4bc 0%, #d4d0c8 100%);
+      border-right: 1px solid #888;
+      transition: right 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .accordion-header.expanded .disk-tray { right: 0; }
+
+    /* LED dot — bigger, more hardware-like */
+    .disk-led {
+      position: absolute;
+      right: 5px;
+      bottom: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #3a3836, #1a1816);
+      border: 1.5px solid #555;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,0,0,0.3);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .accordion-header.expanded .disk-led {
+      background: radial-gradient(circle at 35% 30%, #a8ffb0, #4ade80);
+      box-shadow: 0 0 6px #4ade80, 0 0 14px #4ade8099, inset 0 -1px 2px rgba(0,0,0,0.3);
+      animation: led-pulse 0.6s step-end 5;
+    }
+
+    @keyframes led-pulse { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* bottom control strip */
+    .disk-controls {
+      height: 10px;
+      background: linear-gradient(180deg, #b8b4ac 0%, #a8a49c 100%);
+      border: 1px solid #888;
+      border-radius: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .disk-btn {
+      width: 8px; height: 7px;
+      border-radius: 1px;
+      background: linear-gradient(180deg, #d0ccc4 0%, #a8a49c 100%);
+      border-top: 1px solid #eee;
+      border-left: 1px solid #ddd;
+      border-bottom: 1px solid #555;
+      border-right: 1px solid #666;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .disk-label {
+      font-size: 15px;
+      font-weight: 800;
+      font-family: 'Inter', Arial, sans-serif;
+      letter-spacing: 0.2px;
+      color: #ffffff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      line-height: 1.4;
+    }
+    .disk-label span {
+      font-size: 11px !important;
+      font-family: 'Courier New', monospace;
+      opacity: 0.7;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .accordion-status {
+      font-size: 8.5px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(185,178,165,0.65);
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s, text-shadow 0.3s;
+      white-space: nowrap;
+    }
+
+    .accordion-status .blink {
+      display: inline-block;
+      animation: cursor-blink 1s step-end infinite;
+    }
+
+    @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .accordion-header.expanded .accordion-status {
+      color: #4ade80;
+      text-shadow: 0 0 8px rgba(74,222,128,0.55);
+    }
+
+    /* phosphor glow on label text when expanded */
+    .accordion-header.expanded .disk-label {
+      color: #caf0d8;
+      text-shadow: 0 0 10px rgba(74,222,128,0.35);
+    }
+
+    .accordion-toggle {
+      margin-left: 8px;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: rgba(200,195,188,0.8);
+      transition: transform 0.35s ease, color 0.2s, box-shadow 0.15s;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      /* physical raised button */
+      width: 26px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #5e5a54 0%, #3c3a34 100%);
+      border-top: 1px solid #888;
+      border-left: 1px solid #777;
+      border-bottom: 1px solid #1a1a16;
+      border-right: 1px solid #222;
+      box-shadow: 1px 1px 0 #0a0a08, 2px 2px 0 #1a1a16;
+    }
+
+    .accordion-header.expanded .accordion-toggle {
+      transform: rotate(180deg);
+      color: #4ade80;
+      /* pressed-in state */
+      border-top-color: #1a1a16;
+      border-left-color: #222;
+      border-bottom-color: #888;
+      border-right-color: #777;
+      box-shadow: inset 1px 1px 3px rgba(0,0,0,0.6);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fff;
+    }
+
+    .accordion-body.show {
+      max-height: 8000px;
+      animation: crt-on 0.28s ease-out;
+    }
+
+    /* CRT "screen powering on" flash when content reveals */
+    @keyframes crt-on {
+      0%   { opacity: 0; filter: brightness(4) blur(3px) saturate(0); }
+      30%  { opacity: 1; filter: brightness(2) blur(1px) saturate(0.3); }
+      60%  { opacity: 1; filter: brightness(1.2) blur(0px) saturate(0.8); }
+      100% { opacity: 1; filter: brightness(1) blur(0) saturate(1); }
+    }
+
+    .accordion-content {
+      padding: 20px 24px 24px;
+      border-top: 3px solid #666;
+    }
+
+    .accordion-content table {
+      margin: 0;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spin-fast {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(1080deg); }
+    }
+
+    /* ── FRANCE SECTION ── */
+    .france-intro {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 28px;
+      align-items: start;
+      margin: 20px 0 28px;
+    }
+    .france-intro img {
+      width: 100%;
+      border-radius: 10px;
+      opacity: 0.88;
+      border: 1px solid #e0e4ef;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .guide-card {
+      border: 1px solid #e0e4ef;
+      border-radius: 8px;
+      padding: 16px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .guide-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(13,27,62,0.1);
+      border-color: #e8b84b;
+    }
+    .guide-card-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0d1b3e;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e8b84b;
+    }
+    .guide-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .guide-card li {
+      font-size: 12px;
+      color: #333;
+      padding: 3px 0;
+      border-bottom: 1px solid #f0f2f8;
+      line-height: 1.5;
+    }
+    .guide-card li:last-child { border-bottom: none; }
+    .guide-card li strong { color: #0d1b3e; }
+    .france-art {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 80px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+    .phrase-table thead th {
+      background: #0d1b3e;
+      color: white;
+      text-align: left;
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .phrase-table tbody td {
+      padding: 8px 14px;
+      border-bottom: 1px solid #eef0f4;
+      vertical-align: top;
+    }
+    .phrase-table tbody tr:nth-child(even) td { background: #f9fafc; }
+    .phrase-table .fr { font-style: italic; color: #0d1b3e; font-weight: 500; }
+    .phrase-table .phonetic { color: #888; font-size: 11px; }
+
+    /* ── STANDARDS ACCORDION — RETRO DRIVE ── */
+    .std-accordion { margin: 28px 0; border: 2px solid #0d1b3e; border-radius: 4px; overflow: hidden; box-shadow: 4px 4px 0 #e8b84b; }
+    .std-trigger {
+      width: 100%; background: linear-gradient(180deg,#152040 0%,#0d1b3e 100%); color: #e8b84b;
+      border: none; cursor: pointer; padding: 14px 20px; display: flex; align-items: center;
+      gap: 14px; font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700;
+      letter-spacing: 1.2px; text-align: left; position: relative; overflow: hidden; transition: background 0.2s;
+    }
+    .std-trigger::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 4px);
+      pointer-events: none;
+    }
+    .std-trigger:hover { background: linear-gradient(180deg,#1e2f5a 0%,#152040 100%); }
+    .drive-bay {
+      flex-shrink: 0; width: 54px; height: 36px; background: #080f1c;
+      border: 1.5px solid #2a3f68; border-radius: 3px; padding: 4px 5px 3px;
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .drive-slot {
+      flex: 1; background: #060d1a; border: 1px solid #1e3055; border-radius: 1px;
+      overflow: hidden; position: relative; display: flex; align-items: center; padding: 0 4px; gap: 3px;
+    }
+    .drive-tray {
+      position: absolute; right: 100%; top: 0; bottom: 0; width: 100%;
+      background: #1a2d55; border-right: 1px solid #e8b84b;
+      transition: right 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .std-trigger.open .drive-tray { right: 0; }
+    .drive-led {
+      width: 5px; height: 5px; border-radius: 50%; background: #222; flex-shrink: 0;
+      position: relative; z-index: 1; transition: background 0.2s, box-shadow 0.2s;
+    }
+    .std-trigger.open .drive-led { background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: led-blink 0.7s step-end 4; }
+    @keyframes led-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .drive-btn-row {
+      height: 9px; background: #10203a; border: 1px solid #2a3f68; border-radius: 1px;
+      display: flex; align-items: center; justify-content: flex-end; padding: 0 3px;
+    }
+    .drive-eject-dot { width: 5px; height: 5px; border-radius: 50%; background: #2a3f68; border: 1px solid #3a5888; }
+    .trigger-title { flex: 1; font-size: 12px; line-height: 1.4; text-shadow: 0 0 12px rgba(232,184,75,0.35); }
+    .trigger-status { font-size: 9px; letter-spacing: 1.5px; color: rgba(232,184,75,0.5); white-space: nowrap; transition: color 0.25s; }
+    .trigger-cursor { display: inline-block; animation: cursor-blink 1s step-end infinite; }
+    @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .std-trigger.open .trigger-status { color: #4ade80; }
+    .load-bar { position: absolute; bottom: 0; left: 0; height: 2px; width: 0; background: linear-gradient(90deg,#4ade80,#e8b84b); transition: width 0.45s ease; }
+    .std-trigger.open .load-bar { width: 100%; }
+    .std-panel { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .std-panel.open { max-height: 6000px; }
+    .std-panel-inner { border-top: 2px solid #e8b84b; }
+
+    /* ── PAGE GRID — 3 columns: margin | content | margin ── */
+    .page-wrapper {
+      display: grid;
+      grid-template-columns: 130px 1fr 130px;
+      align-items: start;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    @media (max-width: 1000px) {
+      .page-wrapper { grid-template-columns: 1fr; }
+      .margin-col { display: none; }
+    }
+
+    /* ── MARGIN COLUMNS ── */
+    .margin-col {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #18160f;
+    }
+    .margin-col:first-child {
+      border-right: 1px solid #2e2c22;
+      box-shadow: inset -3px 0 10px rgba(0,0,0,0.5);
+    }
+    .margin-col:last-child {
+      border-left: 1px solid #2e2c22;
+      box-shadow: inset 3px 0 10px rgba(0,0,0,0.5);
+    }
+    .margin-static {
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 8px);
+      pointer-events: none;
+    }
+    .margin-col::after {
+      content: 'ML · MEDIASTATION\2122';
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+      transform-origin: 50% 50%;
+      font-family: 'Courier New', monospace;
+      font-size: 7px;
+      letter-spacing: 3px;
+      color: rgba(74,222,128,0.22);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .margin-illustrations {
+      position: absolute;
+      top: 88px;
+      left: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      padding: 20px 8px;
+      z-index: 2;
+    }
+    .margin-illus-item {
+      display: flex; flex-direction: column; align-items: center; gap: 5px;
+      opacity: 0.52; transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+      cursor: default;
+    }
+    .margin-illus-item:hover { opacity: 1; transform: scale(1.08) translateY(-2px); filter: drop-shadow(0 0 8px rgba(74,222,128,0.45)); }
+    .margin-illus-item img { width: 72px; height: auto; display: block; }
+    .margin-illus-label {
+      font-size: 6px; font-family:'Courier New',monospace;
+      color: #4ade80; letter-spacing: 1.5px; text-transform: uppercase; text-align: center;
+      text-shadow: 0 0 6px rgba(74,222,128,0.35);
+    }
+
+    /* ── FLOATING PODCAST LOGO ── */
+    .floating-podcast-logo {
+      position: fixed; bottom: 28px; right: 28px; z-index: 100;
+      width: 80px; height: 80px;
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.32), 0 0 0 3px #e8b84b;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.7) translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+    .floating-podcast-logo.visible {
+      opacity: 1; transform: scale(1) translateY(0); pointer-events: all;
+    }
+    .floating-podcast-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .floating-podcast-logo:hover { transform: scale(1.08) !important; box-shadow: 0 10px 32px rgba(0,0,0,0.42), 0 0 0 3px #e8b84b; }
+
+    /* ── PODCAST SCREENSHOT HERO ── */
+    .podcast-hero {
+      width: 100%; border-radius: 12px; overflow: hidden;
+      margin: 28px 0 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      border: 1px solid #e0e4ef;
+    }
+    .podcast-hero img { width: 100%; height: auto; display: block; object-fit: contain; }
+    .podcast-hero-caption { font-size: 11px; color: #888; text-align: center; margin-bottom: 24px; font-style: italic; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .cover { padding: 48px 60px 36px; }
+      .main { padding: 40px 60px 48px; }
+      .footer { padding: 16px 60px; }
+      .strand, .studio-card, .future-card, .unit-row { transform: none !important; box-shadow: none !important; }
+      .sticky-nav { display: none; }
+      .school-strip { height: 140px; }
+      .photo-tile-label { opacity: 1; }
+      .chart-embed { grid-template-columns: 1fr; }
+      .margin-col, .std-accordion { display: none !important; }
+      .page-wrapper { display: block; }
+      .std-panel { max-height: none !important; }
+    }
+
+
+
+    /* ══════════════════════════════════════════════════════
+       COMPUTER TOWER — STANDARDS ALIGNMENT SECTION
+    ══════════════════════════════════════════════════════ */
+
+    .tower-computer {
+      margin: 52px 0 48px;
+      /* beige/cream aged plastic — not pure white, not grey */
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(0,0,0,0.018) 6px, rgba(0,0,0,0.018) 7px),
+        linear-gradient(170deg, #dedad0 0%, #cec9bc 35%, #c6c0b3 75%, #bdb8ab 100%);
+      border: 2px solid #9a9488;
+      border-bottom-color: #7a7468;
+      border-radius: 7px 7px 4px 4px;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.55),       /* top highlight */
+        inset 0 -3px 0 rgba(0,0,0,0.22),             /* bottom shadow */
+        inset -10px 0 20px rgba(0,0,0,0.07),         /* right-side depth */
+        inset 3px 0 6px rgba(255,255,255,0.12),      /* left edge catch-light */
+        0 18px 54px rgba(0,0,0,0.42),                /* floor shadow */
+        0 4px 10px rgba(0,0,0,0.22),                 /* close shadow */
+        6px 12px 0 rgba(0,0,0,0.1);                  /* side depth illusion */
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── TOP PANEL ── */
+    .tower-top-panel {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 22px 22px;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(0,0,0,0.02) 5px, rgba(0,0,0,0.02) 6px),
+        linear-gradient(180deg, #d8d3c5 0%, #cac4b6 100%);
+      border-bottom: 2px solid #9a9488;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.5),
+        0 3px 6px rgba(0,0,0,0.12);
+      position: relative;
+    }
+
+    /* ── LEFT: BUTTONS + SPEAKER ── */
+    .tower-controls-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .tower-power-btn {
+      width: 38px;
+      height: 52px;
+      background: linear-gradient(180deg, #d2cec0 0%, #b8b3a5 100%);
+      border: 2px solid #8a8478;
+      border-bottom-color: #6a6458;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.55),
+        inset 0 -2px 0 rgba(0,0,0,0.18),
+        3px 4px 6px rgba(0,0,0,0.35);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.08s ease, transform 0.08s ease;
+      padding: 0;
+    }
+    .tower-power-btn .power-symbol {
+      font-size: 13px;
+      color: #5a5550;
+      line-height: 1;
+      user-select: none;
+    }
+    .tower-power-btn::after {
+      content: 'POWER';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 6px;
+      font-family: 'Courier New', monospace;
+      color: #7a7468;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .tower-power-btn:active {
+      box-shadow: inset 0 3px 5px rgba(0,0,0,0.35), 1px 1px 2px rgba(0,0,0,0.2);
+      transform: translateY(1px);
+    }
+
+    .tower-reset-btn {
+      width: 24px;
+      height: 32px;
+      background: linear-gradient(180deg, #cac5b7 0%, #aeaa9c 100%);
+      border: 1.5px solid #8a8478;
+      border-bottom-color: #6a6458;
+      border-radius: 3px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.5),
+        2px 3px 4px rgba(0,0,0,0.28);
+      cursor: pointer;
+      position: relative;
+    }
+    .tower-reset-btn::after {
+      content: 'RESET';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 5.5px;
+      font-family: 'Courier New', monospace;
+      color: #7a7468;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    /* Speaker grille — dot-matrix CSS */
+    .tower-speaker-grille {
+      width: 54px;
+      height: 54px;
+      background:
+        radial-gradient(circle at center, rgba(0,0,0,0.7) 1.6px, transparent 1.6px),
+        #1a1a1a;
+      background-size: 6.5px 6.5px;
+      border: 1.5px solid #444;
+      border-radius: 3px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.7), 1px 1px 3px rgba(0,0,0,0.3);
+      margin-top: 4px;
+    }
+
+    /* ── CENTER: BRAND PLATE ── */
+    .tower-brand-plate {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+    }
+    .tower-badge-img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      transition: none;
+      cursor: default;
+      border-radius: 3px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    .tower-badge-img:hover { transform: none; }
+    .tower-brand-name {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: #2e2a24;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .tower-brand-name sup { font-size: 10px; font-weight: 400; vertical-align: super; }
+    .tower-brand-sub {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #5a5450;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .tower-model-num {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #7a7468;
+      letter-spacing: 0.8px;
+      border: 1px solid #b8b3a5;
+      padding: 2px 8px;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.04);
+    }
+
+    /* ── RIGHT: LEDS + FLOPPY ── */
+    .tower-controls-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .tower-led-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-items: flex-end;
+    }
+    .tower-led-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tower-led-label {
+      font-family: 'Courier New', monospace;
+      font-size: 6.5px;
+      letter-spacing: 1px;
+      color: #7a7468;
+    }
+    .tower-led {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid #444;
+      background: #282822;
+    }
+    .tower-led.pwr-led {
+      background: #e8b84b;
+      border-color: #a07820;
+      box-shadow: 0 0 5px #e8b84b, 0 0 2px rgba(232,184,75,0.5);
+      animation: led-amber-pulse 3s ease-in-out infinite;
+    }
+    @keyframes led-amber-pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 5px #e8b84b; }
+      50% { opacity: 0.72; box-shadow: 0 0 2px #e8b84b; }
+    }
+    .tower-led.hdd-led { background: #282822; }
+    .tower-led.hdd-led.active {
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+      animation: led-blink 0.3s step-end 8;
+    }
+
+    /* 3.5" floppy drive on the side panel */
+    .tower-floppy-bay {
+      width: 80px;
+    }
+    .tower-floppy-slot {
+      height: 14px;
+      background: #111;
+      border: 1.5px solid #444;
+      border-radius: 1px;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.85), 1px 1px 2px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .tower-floppy-slot::after {
+      content: '';
+      position: absolute;
+      left: 8px; right: 8px;
+      top: 50%; height: 1px;
+      background: #2a2a2a;
+      transform: translateY(-50%);
+    }
+
+    /* ── INTRO BAR — CRT STATUS LINE ── */
+    .tower-intro-bar {
+      background: #0a0a0a;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #222;
+      padding: 7px 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      color: rgba(232, 184, 75, 0.8);
+      letter-spacing: 1px;
+      line-height: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tower-cursor { display: inline-block; margin-left: 4px; }
+
+    /* ── BUILT-IN LCD DISPLAY ── */
+    .tower-display {
+      margin: 0 22px 14px;
+      background: #0a1a10;
+      border: 3px solid #6a6458;
+      border-radius: 4px;
+      box-shadow:
+        inset 0 0 24px rgba(0,0,0,0.7),
+        0 2px 6px rgba(0,0,0,0.4),
+        0 1px 0 rgba(255,255,255,0.12);
+      padding: 14px 18px 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #a3e6b0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* very subtle scan lines — aesthetic only, not obstructive */
+    .tower-display::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.06) 3px,
+        rgba(0,0,0,0.06) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* screen glow */
+    .tower-display::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(74,222,128,0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .tower-display-inner { position: relative; z-index: 2; }
+    .tower-display-header {
+      color: #d1fae5;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(163,230,176,0.3);
+      padding-bottom: 6px;
+    }
+    .tower-display-row {
+      color: #a3e6b0;
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      margin-bottom: 3px;
+    }
+    .tower-display-row .dim { opacity: 0.55; }
+    .tower-display-row .bright { color: #d1fae5; }
+    .tower-display-prompt {
+      margin-top: 9px;
+      color: #a3e6b0;
+      font-size: 12px;
+      letter-spacing: 0.4px;
+    }
+    /* bezel screws */
+    .tower-display-screw {
+      position: absolute;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #8a8478, #5a5450);
+      border: 1px solid #4a4438;
+      z-index: 3;
+    }
+    .tower-display-screw.tl { top: 5px; left: 5px; }
+    .tower-display-screw.tr { top: 5px; right: 5px; }
+    .tower-display-screw.bl { bottom: 5px; left: 5px; }
+    .tower-display-screw.br { bottom: 5px; right: 5px; }
+    /* ── Tab grid inside CRT display ── */
+    .tower-tab-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .tower-tab-group {
+      border: 1px solid rgba(163,230,176,0.25);
+      border-radius: 3px;
+      padding: 9px 10px 10px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .tower-tab-group:hover { background: rgba(163,230,176,0.08); border-color: rgba(163,230,176,0.55); }
+    .tower-tab-group.tab-open { background: rgba(163,230,176,0.12); border-color: #a3e6b0; }
+    .tower-tab-head {
+      color: #fcd34d;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(163,230,176,0.2);
+      margin-bottom: 6px;
+    }
+    .tower-tab-range {
+      color: rgba(163,230,176,0.6);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+    .tower-tab-items {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .tower-tab-items li {
+      color: #a3e6b0;
+      font-size: 11px;
+      line-height: 1.7;
+      padding-left: 12px;
+      position: relative;
+    }
+    .tower-tab-items li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: rgba(163,230,176,0.45);
+    }
+    .tower-tab-group.tab-open .tower-tab-items li { color: #d1fae5; }
+    .tower-tab-group.tab-open .tower-tab-head { color: #fde68a; }
+    @media (max-width: 760px) { .tower-tab-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── VENT STRIPS ── */
+    .tower-vent-strip {
+      height: 20px;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          #1c1c1c 0px, #1c1c1c 3px,
+          #2e2e2e 3px, #2e2e2e 4px,
+          #262626 4px, #262626 5px,
+          #111 5px, #111 7px,
+          transparent 7px, transparent 10px
+        );
+      border-top: 1px solid #7a7468;
+      border-bottom: 1px solid #7a7468;
+    }
+
+    /* ── DRIVE BAY HOUSING — dark inner chassis ── */
+    .tower-bay-housing {
+      background: #0e0e0e;
+      padding: 10px 16px 14px;
+      border-top: 2px solid #555;
+      border-bottom: 2px solid #555;
+      box-shadow:
+        inset 0 6px 16px rgba(0,0,0,0.75),
+        inset 0 -6px 16px rgba(0,0,0,0.75),
+        inset 4px 0 10px rgba(0,0,0,0.5),
+        inset -4px 0 10px rgba(0,0,0,0.5);
+    }
+
+    /* Each drive bay inside the tower */
+    .tower-bay-housing .standards-section {
+      margin: 5px 0;
+      border: 1.5px solid #3a3a3a;
+      border-radius: 2px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        inset 0 -1px 0 rgba(0,0,0,0.3),
+        0 2px 4px rgba(0,0,0,0.55);
+    }
+    .tower-bay-housing .standards-section:first-child { margin-top: 0; }
+    .tower-bay-housing .standards-section:last-child { margin-bottom: 0; }
+
+    /* ── BAY GROUP COLOR ACCENTS ── */
+    .tower-bay-housing .standards-section[data-bay-group="portfolio"] { border-left: 3px solid #e8b84b; }
+    .tower-bay-housing .standards-section[data-bay-group="standards"] { border-left: 3px solid #60a5fa; }
+    .tower-bay-housing .standards-section[data-bay-group="studio"]    { border-left: 3px solid #4ade80; }
+    .tower-bay-housing .standards-section[data-bay-group="outcomes"]  { border-left: 3px solid #f87171; }
+    .tower-bay-housing .standards-section[data-bay-group="resources"] { border-left: 3px solid #c084fc; }
+
+    /* ── BOTTOM BEZEL ── */
+    .tower-bottom-panel {
+      height: 22px;
+      background: linear-gradient(180deg, #c4bfb2 0%, #b4afa2 100%);
+      border-top: 1px solid #8a8478;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+      position: relative;
+    }
+    /* chassis screw holes */
+    .tower-bottom-panel::before,
+    .tower-bottom-panel::after {
+      content: '';
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #c8c3b5, #8a8478);
+      border: 1px solid #7a7468;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 1px 1px rgba(255,255,255,0.3);
+    }
+    .tower-bottom-panel::before { left: 12px; }
+    .tower-bottom-panel::after  { right: 12px; }
+
+    @media print {
+      .tower-computer { box-shadow: none; }
+      .tower-led, .tower-intro-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING PODCAST LOGO -->
+<div class="floating-podcast-logo" id="floatingLogo" title="ML Podcast">
+  <img src="ML podcast logo.png" alt="Mary Lyon Podcast Logo">
+</div>
+
+<!-- INLINE ILLUSTRATION STRIP — retro media equipment, lives in the content flow -->
+<!-- (removed from fixed sidebars per Zach's direction) -->
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logos">
+    <div class="logo-badge">
+      <img src="bps_logo_dl.png" alt="Boston Public Schools" style="height:34px; width:auto; object-fit:contain;">
+    </div>
+    <div class="logo-badge">
+      <img src="mary_lyon_logo.jpeg" alt="Mary Lyon Pilot High School" style="height:42px; width:auto; object-fit:contain;">
+    </div>
+    <img src="ML podcast logo.png" alt="Mary Lyon Podcast" style="height:52px; width:52px; border-radius:10px; object-fit:cover; box-shadow:0 2px 10px rgba(0,0,0,0.45);">
+  </div>
+  <div class="cover-eyebrow">Media Literacy &amp; Digital Literacy · Mary Lyon Pilot High School · Campus Without Walls · SY 2025–2026</div>
+  <h1>Broadcasting &amp; Media Literacy:<br><em>Truth, Power, and Voice</em></h1>
+  <div class="subtitle">A project-based media and digital literacy course: what was built, how it aligned to MA DLCS standards, what was learned, and where it goes next</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Instructor</strong>Zachary English</div>
+    <div class="cover-meta-item"><strong>Grade &amp; Population</strong>Grade 12 Multilingual Learners (WIDA 3.0–4.2)</div>
+    <div class="cover-meta-item"><strong>Enrollment</strong>Mary Lyon seniors + BPS-wide via Campus Without Walls</div>
+    <div class="cover-meta-item"><strong>Duration</strong>Yearlong elective, 4–5 days/week</div>
+    <div class="cover-meta-item"><strong>Next school</strong>Fenway High School (SY 2026–2027)</div>
+  </div>
+</div>
+<div class="gold-bar"></div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="#what">Overview</a>
+  <a href="#bay-work">Student Work</a>
+  <a href="#bay-outcomes">Results</a>
+  <a href="#bay-standards">Standards</a>
+  <a href="#bay-studio">Studio</a>
+  <a href="#docs">Documents</a>
+</nav>
+
+<!-- SCHOOL PHOTO STRIP -->
+<div class="school-strip">
+  <img src="mary-lyon-school.jpeg" alt="Mary Lyon Pilot High School">
+  <div class="school-strip-overlay">
+    <div class="school-strip-text">
+      <h3>Mary Lyon Pilot High School</h3>
+      <p>Roslindale, Boston · SY 2025–2026 · Campus Without Walls</p>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrapper">
+
+<!-- LEFT MARGIN COLUMN -->
+<div class="margin-col" aria-hidden="true">
+  <div class="margin-static"></div>
+  <div class="margin-illustrations">
+    <div class="margin-illus-item"><img src="retro-computer.png" alt=""><span class="margin-illus-label">computer</span></div>
+    <div class="margin-illus-item"><img src="broadcast-console.png" alt=""><span class="margin-illus-label">console</span></div>
+    <div class="margin-illus-item"><img src="retro-tv.png" alt=""><span class="margin-illus-label">broadcast</span></div>
+    <div class="margin-illus-item"><img src="podcast-mic.png" alt=""><span class="margin-illus-label">podcast</span></div>
+    <div class="margin-illus-item"><img src="retro-camera.png" alt=""><span class="margin-illus-label">camera</span></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div id="what" style="padding: 28px 0 24px;">
+    <h2 style="font-size:22px;font-weight:800;color:#0d1b3e;letter-spacing:-0.3px;margin:0 0 14px;">A cross-curricular elective blending media literacy, digital literacy, ESL, history, digital wellness, and content creation</h2>
+    <p style="font-size:15px;line-height:1.7;color:#333;margin:0 0 13px;">Broadcasting &amp; Media Literacy was developed for multilingual learners at Mary Lyon Pilot High School and offered district-wide through Campus Without Walls. This portfolio documents the course's nine-unit design, standards alignment, origin story, student work, studio setup, and outcomes. Everything is organized in the <strong>Course Data Terminal</strong> below — click any drive bay to open it. Use the nav above to jump between sections.</p>
+    <p style="font-size:14px;line-height:1.75;color:#444;margin:0 0 13px;">This course came out of teaching tech and noticing two things at the same time: real gaps in basic digital literacy, and genuine student obsession with content — TikTok, news, YouTube, the way stories get spun and spread. Kids who couldn't identify a credible source were producing their own media every day and didn't know it. They were also hungry for the physical side of it: making things, printing things, designing things. So we tried to hold all of that at once.</p>
+    <p style="font-size:14px;line-height:1.75;color:#444;margin:0 0 13px;">The 250th anniversary of the American Revolution gave us a through-line. We looked at how people communicated, organized, and spread propaganda in 1775 — pamphlets, town criers, political cartoons — and put that next to what's happening now in a hyper-partisan media environment. Same dynamics, different platforms. Then we pivoted: students stopped analyzing other people's content and started making their own. Influencer-style makeup tutorials. YouTube videos about their favorite animes. Commercials. Podcasts published on Spotify. T-shirts, mugs, and stickers off the heat press. Coding apps and websites for actual school use. Videography. Gaming content. Whatever students had a personal stake in producing.</p>
+    <p style="font-size:14px;line-height:1.75;color:#444;margin:0;">Because the content was real and the audience was real, the standards followed naturally. <strong>MA DLCS</strong>, <strong>ELA</strong>, <strong>Civic History</strong>, <strong>ESL/ELD</strong>, <strong>WIDA</strong>, <strong>ISTE</strong>, and <strong>CASEL</strong> — all of them showed up, because you can't make a podcast about immigration policy without reading, writing, arguing, researching, and knowing your audience. The course was co-taught with ESL colleagues from the start, with bilingual scaffolds and WIDA supports built into every unit.</p>
+  </div>
+
+  <!-- COURSE DOCUMENTS — flat, not accordioned -->
+  <div id="docs" style="margin: 28px 0 32px; padding: 22px 24px 24px; background: #f7f8fc; border: 1px solid #dde2ee; border-radius: 8px;">
+    <h3 style="font-size:15px;font-weight:800;color:#0d1b3e;margin:0 0 16px;letter-spacing:-0.2px;">Course Documents &amp; Resources</h3>
+    <div class="docs-grid">
+      <div class="docs-group">
+        <h5>Course Foundation</h5>
+        <ul>
+          <li><a href="https://docs.google.com/document/d/1OWmpOSG70F38BtuCnnEuWzgz-Vu3VOrwLIxfmHUxsDY/edit?usp=sharing" target="_blank"><span class="doc-icon">📄</span> SY 2025–2026 Syllabus</a></li>
+          <li><a href="https://docs.google.com/document/d/1oFPabf6vEH05CsDKr8U9xDVKQda-9XMrIoXJEskayXQ/edit?usp=sharing" target="_blank"><span class="doc-icon">📄</span> Course Overview</a></li>
+          <li><a href="https://docs.google.com/document/d/15PWHHIKVoMbMUQRVrsqXTZ7EqP-25Rn5AfWWzE2L7Po/edit?usp=sharing" target="_blank"><span class="doc-icon">📄</span> Scope &amp; Sequence</a></li>
+          <li><a href="https://docs.google.com/document/d/1PRQAsSvv1Pn1XoF4BCF8teOJ5829g9Y9a_aMbYgHozo/edit?usp=sharing" target="_blank"><span class="doc-icon">📄</span> Essential Questions (All 9 Units)</a></li>
+        </ul>
+      </div>
+      <div class="docs-group">
+        <h5>Standards &amp; Curriculum Design</h5>
+        <ul>
+          <li><a href="https://docs.google.com/document/d/1pVuE2etmjxiUCrOTRiySQDQsLZBkUxfk/edit?usp=sharing" target="_blank"><span class="doc-icon">📝</span> Curriculum Design Proposal (UbD)</a></li>
+          <li><a href="https://docs.google.com/presentation/d/1Kz7pV7M_R9g2FnEGbqchQXXI2z99pG1f5pzXqh9nbuQ/edit?usp=drive_link" target="_blank"><span class="doc-icon">📊</span> Aligning with DESE MLL Look-Fors</a></li>
+          <li><a href="https://docs.google.com/document/d/1gjkIOsOd2y4icqZvSLmtTY6sCyLVMJXSH9bgGhhRvCQ/edit?usp=sharing" target="_blank"><span class="doc-icon">📄</span> Field Trip Alignment Plan</a></li>
+        </ul>
+      </div>
+      <div class="docs-group">
+        <h5>Unit Materials &amp; Student Work</h5>
+        <ul>
+          <li><a href="https://docs.google.com/document/d/1hxQL8BTwZ35fogo9tYlhjpj2BlYm8kfiNjxUqOUpXQM/edit?usp=drive_link" target="_blank"><span class="doc-icon">📚</span> High-Quality Text List (All Units)</a></li>
+          <li><a href="https://drive.google.com/drive/folders/11LkIpIP0lJtp9GQwANE4C_e5iGKhwMb-?usp=sharing" target="_blank"><span class="doc-icon">📁</span> Unit 1 Full Folder</a></li>
+          <li><a href="https://open.spotify.com/episode/54miOx1WvxjUBF6ob1NlfB?si=LwWky_1wSr-cdUUfB5rjGQ" target="_blank"><span class="doc-icon">🎙️</span> Podcast: "The AI Revolution" — Spotify</a></li>
+          <li><a href="https://docs.google.com/document/d/1S_BePCOJDneyWjwr_3GMzN9bhzAg68IVricp-1SXE_A/edit?usp=drive_link" target="_blank"><span class="doc-icon">📄</span> Podcast Club Materials</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PODCAST SCREENSHOT HERO -->
+  <div class="podcast-hero">
+    <img src="Podcast screenshot.png" alt="Students recording in the Mary Lyon podcast studio">
+  </div>
+  <p class="podcast-hero-caption">Mary Lyon Podcast Studio — students producing original audio content, SY 2024–2025</p>
+
+  <!-- COMPUTER TOWER: STANDARDS ALIGNMENT -->
+  <span id="standards"></span>
+  <div class="tower-computer">
+
+    <div class="tower-top-panel">
+      <div class="tower-controls-left">
+        <button class="tower-power-btn" title="Power On"><span class="power-symbol">⏻</span></button>
+        <button class="tower-reset-btn" title="Reset"></button>
+        <div class="tower-speaker-grille"></div>
+      </div>
+      <div class="tower-brand-plate">
+        <img src="tower-badge.png" alt="MediaStation™" class="tower-badge-img">
+        <div class="tower-brand-sub">Course Data Terminal · SY 2025–26</div>
+        <div class="tower-model-num">Model No. ML-2526 &nbsp;·&nbsp; 15 Drive Bays</div>
+      </div>
+      <div class="tower-controls-right">
+        <div class="tower-led-group">
+          <div class="tower-led-item">
+            <span class="tower-led-label">PWR</span>
+            <div class="tower-led pwr-led" id="towerPwrLed"></div>
+          </div>
+          <div class="tower-led-item">
+            <span class="tower-led-label">HDD</span>
+            <div class="tower-led hdd-led" id="towerHddLed"></div>
+          </div>
+        </div>
+        <div class="tower-floppy-bay"><div class="tower-floppy-slot"></div></div>
+      </div>
+    </div>
+
+    <div class="tower-display">
+      <div class="tower-display-screw tl"></div>
+      <div class="tower-display-screw tr"></div>
+      <div class="tower-display-screw bl"></div>
+      <div class="tower-display-screw br"></div>
+      <div class="tower-display-inner">
+        <div class="tower-display-header">MEDIASTATION™ COURSE DATA TERMINAL &nbsp;·&nbsp; SY 2025–26 &nbsp;·&nbsp; ML-2526 &nbsp;·&nbsp; 15 BAYS</div>
+        <div class="tower-tab-grid">
+          <div class="tower-tab-group" data-group="portfolio">
+            <div class="tower-tab-head">Portfolio</div>
+            <div class="tower-tab-range">BAYS 01–04</div>
+            <ul class="tower-tab-items">
+              <li>Course Overview</li>
+              <li>Origin Story</li>
+              <li>Nine Units</li>
+              <li>Student Work</li>
+            </ul>
+          </div>
+          <div class="tower-tab-group" data-group="standards">
+            <div class="tower-tab-head">Standards</div>
+            <div class="tower-tab-range">BAYS 05–09</div>
+            <ul class="tower-tab-items">
+              <li>MA DLCS</li>
+              <li>WIDA ELD</li>
+              <li>MA ELA / HSS</li>
+              <li>ISTE</li>
+              <li>CASEL / SEL</li>
+            </ul>
+          </div>
+          <div class="tower-tab-group" data-group="studio">
+            <div class="tower-tab-head">Studio &amp; Lab</div>
+            <div class="tower-tab-range">BAYS 10–11</div>
+            <ul class="tower-tab-items">
+              <li>Game Lab</li>
+              <li>Media Studio</li>
+            </ul>
+          </div>
+          <div class="tower-tab-group" data-group="outcomes">
+            <div class="tower-tab-head">Outcomes</div>
+            <div class="tower-tab-range">BAYS 12–13</div>
+            <ul class="tower-tab-items">
+              <li>How It Went</li>
+              <li>What's Missing</li>
+            </ul>
+          </div>
+          <div class="tower-tab-group" data-group="resources">
+            <div class="tower-tab-head">Resources</div>
+            <div class="tower-tab-range">BAYS 14–15</div>
+            <ul class="tower-tab-items">
+              <li>France Trip</li>
+              <li>Course Docs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tower-display-prompt"><span class="blink">█</span> CLICK A TAB TO JUMP TO THAT SECTION &nbsp;·&nbsp; CLICK ANY BAY BELOW TO OPEN OR CLOSE IT</div>
+      </div>
+    </div>
+
+    <div class="tower-intro-bar">COURSE DATA TERMINAL READY &nbsp;·&nbsp; 11 DRIVE BAYS LOADED &nbsp;·&nbsp; STANDARDS &nbsp;·&nbsp; ARCHITECTURE &nbsp;·&nbsp; ORIGIN &nbsp;·&nbsp; STUDIO &nbsp;·&nbsp; RESULTS &nbsp;·&nbsp; NEXT STEPS &nbsp;·&nbsp; CLICK ANY BAY TO OPEN<span class="tower-cursor blink">█</span></div>
+
+    <div class="tower-vent-strip"></div>
+
+    <div class="tower-bay-housing">
+
+  <div class="standards-section" data-bay-group="portfolio">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">Course Overview<br><span style="font-size:9px;opacity:0.6;font-weight:400;">DL-01-OVERVIEW.DAT · What This Course Is · Five Disciplines</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <p style="margin-bottom:14px;"><strong>Broadcasting &amp; Media Literacy</strong> is a production course built on a rigorous conceptual foundation. The first half of the year is explicitly preparatory: students build academic language, master core media concepts — ethos, pathos, logos, bias, persuasion, analog vs. digital media forms — and develop the critical vocabulary needed to function as producers, not just audiences. That foundation is not the destination. It is the runway. In the second half, students pivot fully into content creation: running a live school newsroom with professional role rotations (anchor, editor, researcher, social media manager), recording and publishing original audio on Spotify, producing video for YouTube, and working in a fully built media makerspace equipped with a Cricut vinyl cutter, Cricut Mug Maker, sublimation heat press, and HTV shirt press. Students designed and made branded merchandise, stickers, mugs, and t-shirts as production artifacts — not crafts. The course ran at Mary Lyon and was available BPS-wide through Campus Without Walls.</p>
+        <p style="margin-bottom:20px;">The course grew from conversations with students. Surveys during the Mary Lyon Podcasting Club pilot shaped the scope and sequence. Students named what they wanted to learn. The curriculum followed. That student input is why the course held engagement from a population that can be hard to keep in an elective.</p>
+        <h3 style="color:#0d1b3e;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin:20px 0 12px;border-top:1px solid #dde2ee;padding-top:16px;">What the Foundation Builds — Five Disciplines</h3>
+        <div class="strands">
+          <div class="strand"><div class="strand-label">Media Literacy</div><p>Bias, persuasion, ethos/pathos/logos, SIFT method, misinformation/disinformation analysis, source evaluation across platforms</p></div>
+          <div class="strand accent"><div class="strand-label">Digital Literacy (MA DLCS)</div><p>Computing &amp; Society and Digital Tools &amp; Collaboration standards: digital citizenship, online safety, tool selection, artifact creation, and source citation</p></div>
+          <div class="strand"><div class="strand-label">Digital Health &amp; Wellness</div><p>Social media and mental health, body image, screen time, digital boundaries. Drawn directly from BPS Office of Health &amp; Wellness curriculum and integrated into Unit 4.</p></div>
+          <div class="strand accent"><div class="strand-label">Civic History</div><p>American Revolution, protest movements, BLM. Students compared propaganda and persuasion across centuries using Boston as the classroom: Tea Party Museum, Old South Meeting House, Kennedy Institute.</p></div>
+          <div class="strand wide"><div class="strand-label">Media Production — the pivot the whole first half builds toward</div><p>After a semester of foundation-building, students become producers. The newsroom ran with full professional role rotations: anchor, editor, researcher, social media manager. The podcast published on Spotify. Video went to YouTube. The makerspace — Cricut vinyl cutter, Cricut Mug Maker, sublimation press, HTV shirt press — gave students a physical production channel alongside digital. Students designed and made branded merchandise as production artifacts. Analog and digital media creation happened in the same room.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="portfolio">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">Origin Story<br><span style="font-size:9px;opacity:0.6;font-weight:400;">DL-02-ORIGIN.DAT · How This Course Came to Exist · 2019–2026</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-label">Pre-Pandemic BPS Teaching</div>
+            <p>Most students arrived with no computer experience outside of MAP and ACCESS testing. Digital literacy was embedded in ESL instruction as a baseline. That gap shaped every instructional choice that followed.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-label">Teacher-Facing PD (Belmont, Umana)</div>
+            <p>Led professional development at multiple schools on using technology to reduce teacher workload and improve instruction. Focus was adoption and trust-building, not tool demonstration.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-label">Revolutionary Spaces Educational Board (2019)</div>
+            <p>Joined the Educational Board of Revolutionary Spaces and helped co-create the <em>Revolution Is Brewing</em> interactive civic media activity at the Old State House. Six years later, that same activity became the anchor field trip for Unit 3 of this course.</p>
+            <div style="margin-top:12px;border-radius:8px;overflow:visible;background:#1a1a1a;text-align:center;">
+              <!-- ⛔ NEVER CROP rev.jpg — object-fit must stay "contain". CSS hard lock enforces this. See CLAUDE.md. -->
+              <img src="rev.jpg" alt="Students at the Old State House during the Revolution Is Brewing interactive session" style="width:100%;display:block;height:auto;object-fit:contain;background:#1a1a1a;">
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-label">Mary Lyon Podcasting Club</div>
+            <p>Built an extracurricular podcasting program where students learned audio production, equipment setup, and digital storytelling. Strong enough engagement that the principal asked to formalize it as an elective. <a href="https://docs.google.com/document/d/1S_BePCOJDneyWjwr_3GMzN9bhzAg68IVricp-1SXE_A/edit?usp=drive_link" target="_blank" class="text-link">View Podcast Club materials ↗</a></p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-label">SY 2025–2026: The Elective Becomes a Course</div>
+            <p>Student surveys shaped the scope and sequence. The course ran at Mary Lyon and was offered BPS-wide through Campus Without Walls. The <a href="https://docs.google.com/document/d/1pVuE2etmjxiUCrOTRiySQDQsLZBkUxfk/edit?usp=sharing" target="_blank" class="text-link">UbD Curriculum Design Proposal</a> and <a href="https://docs.google.com/document/d/15PWHHIKVoMbMUQRVrsqXTZ7EqP-25Rn5AfWWzE2L7Po/edit?usp=sharing" target="_blank" class="text-link">scope and sequence</a> are in Course Documents below.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- BAY 3: NINE UNITS -->
+  <span id="units"></span>
+  <div class="standards-section" data-bay-group="portfolio">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">Scope &amp; Sequence — Nine Units<br><span style="font-size:9px;opacity:0.6;font-weight:400;">DL-03-UNITS.DAT · Full Year Curriculum Map &nbsp;<a href="https://docs.google.com/document/d/1PRQAsSvv1Pn1XoF4BCF8teOJ5829g9Y9a_aMbYgHozo/edit?usp=sharing" target="_blank" style="color:#e8b84b;text-decoration:none;">Essential Questions ↗</a></span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <div class="units">
+          <div class="unit-row"><div class="unit-num">1</div><div class="unit-body"><h4>What is Media Literacy?</h4><p>Bias, audience, persuasion, ad analysis, ethos/pathos/logos — foundation for the year · Field trip: Boston Public Library (Copley)</p></div></div>
+          <div class="unit-row"><div class="unit-num">2</div><div class="unit-body"><h4>Reality Check — Media vs. Truth</h4><p>Fact-checking, source evaluation, misinformation vs. disinformation · Major project: student podcast "One Story, Two Realities"</p></div></div>
+          <div class="unit-row"><div class="unit-num">3</div><div class="unit-body"><h4>American Revolutions — Then &amp; Now</h4><p>Revolutionary Boston, protest media, propaganda — BLM vs. Boston Tea Party comparison · Field trips: Old South Meeting House, Boston Tea Party Ships &amp; Museum</p></div></div>
+          <div class="unit-row"><div class="unit-num">4</div><div class="unit-body"><h4>Digital Health &amp; Body Image</h4><p>Social media, mental health, digital wellness, screen time · Project: PSA or health infographic · BPS Office of Health &amp; Wellness curriculum integrated</p></div></div>
+          <div class="unit-row"><div class="unit-num">5</div><div class="unit-body"><h4>From Consumers to Creators — Mary Lyon Newsroom</h4><p>Students launch and run a school newsroom; rotate through anchor, editor, researcher, and social media manager roles · Field trip: Boston Globe HQ or GBH Studios</p></div></div>
+          <div class="unit-row"><div class="unit-num">6</div><div class="unit-body"><h4>Truth to Power — Investigative Media</h4><p>Journalism ethics, longform storytelling, accountability reporting · Field trip: Museum of African American History (Beacon Hill)</p></div></div>
+          <div class="unit-row"><div class="unit-num">7</div><div class="unit-body"><h4>Local History &times; Youth Voice</h4><p>Community oral histories, place-based media, Boston civic storytelling · Field trip: Edward M. Kennedy Institute for the U.S. Senate</p></div></div>
+          <div class="unit-row"><div class="unit-num">8</div><div class="unit-body"><h4>Our Stories, Our Voices</h4><p>Identity, memoir, multilingual personal narrative — audio memoirs, student-produced storytelling across home languages</p></div></div>
+          <div class="unit-row"><div class="unit-num">9</div><div class="unit-body"><h4>Final Media Showcase — Truth, Power &amp; Voice</h4><p>Student-led expo: podcasts, news segments, PSA campaigns, digital portfolios — published and shared with the school community</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- BAY 4: STUDENT WORK & ARTIFACTS -->
+  <div id="bay-work" class="standards-section" data-bay-group="portfolio">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">Student Work &amp; Artifacts<br><span style="font-size:9px;opacity:0.6;font-weight:400;">DL-04-WORK.DAT · Photos · Podcast · Classroom Output</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <figure class="podcast-screenshot">
+          <img src="Podcast screenshot.png" alt="Mary Lyon students recording in the podcast studio">
+          <figcaption>Mary Lyon Podcast Studio — students recording original audio, SY 2025–2026</figcaption>
+        </figure>
+        <div class="photo-gallery">
+          <div class="photo-tile">
+            <img src="green-screen.jpg" alt="Students filming against the green screen" style="object-position: center 18%;">
+            <div class="photo-tile-label">Green Screen · Video Production</div>
+          </div>
+          <div class="photo-tile">
+            <img src="student-work-1.jpg" alt="Student work sample" style="object-position: center center;">
+            <div class="photo-tile-label">Student Work · Media Literacy</div>
+          </div>
+          <div class="photo-tile">
+            <img src="cricut2.jpg" alt="Student using the Cricut cutter and designing a mug" style="object-position: center 38%;">
+            <div class="photo-tile-label">Design Studio · Cricut &amp; Mugs</div>
+          </div>
+          <div class="photo-tile">
+            <img src="Podcast screenshot.png" alt="Students recording in the podcast studio" style="object-position: center 28%;">
+            <div class="photo-tile-label">Podcast Studio · Recording</div>
+          </div>
+        </div>
+        <p class="gallery-caption">Broadcasting &amp; Media Literacy — SY 2024–2025 · Mary Lyon Pilot High School</p>
+        <div class="spotify-card" style="margin-top:20px;">
+          <div class="spotify-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.434-5.305-1.76-8.786-.963-.335.077-.67-.133-.746-.469-.077-.336.132-.67.469-.746 3.809-.871 7.077-.496 9.713 1.115.293.18.386.563.207.856zm1.223-2.723c-.226.367-.706.482-1.072.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.127-.848-.105-.973-.517-.125-.413.108-.848.52-.973 3.632-1.102 8.147-.568 11.233 1.328.366.226.48.707.257 1.071zm.105-2.835c-3.223-1.914-8.54-2.09-11.618-1.156-.494.15-1.017-.129-1.166-.623-.149-.495.13-1.018.623-1.167 3.535-1.073 9.409-.866 13.115 1.338.445.264.590.837.327 1.282-.264.443-.838.59-1.281.326z"/></svg></div>
+          <div class="spotify-body">
+            <div class="spotify-label">Student Artifact — Podcast Pilot Episode</div>
+            <div class="spotify-title">The AI Revolution</div>
+            <div class="spotify-meta">Mary Lyon Pilot High School · Published on Spotify</div>
+            <a href="https://open.spotify.com/episode/54miOx1WvxjUBF6ob1NlfB?si=LwWky_1wSr-cdUUfB5rjGQ" target="_blank" class="spotify-btn">▶ Listen on Spotify</a>
+          </div>
+          <div class="spotify-desc">Students researched, scripted, recorded, and published this episode independently — a public-facing artifact produced with newsroom skills built across the course.</div>
+        </div>
+        <figure class="podcast-screenshot">
+          <img src="Podcast screenshot.png" alt="Mary Lyon students recording in the podcast studio">
+          <figcaption>Mary Lyon students in the podcast studio</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div id="bay-standards" class="standards-section" data-bay-group="standards">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">MA DLCS Standards<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Digital Literacy &amp; Computer Science · Grades 9–12</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <div style="background:#f0f4ff; border-left: 4px solid #3b5bdb; border-radius: 4px; padding: 16px 18px; margin-bottom: 20px;">
+          <p style="font-size: 14px; font-weight: 700; color: #0d1b3e; margin-bottom: 8px;">A Cross-Curricular Elective Built from Real Need</p>
+          <p style="font-size: 13px; color: #333; margin-bottom: 10px; line-height: 1.65;">This course didn't emerge from a district curriculum map. It grew out of a gap: students at Mary Lyon K-8 were producing, consuming, and being shaped by media with no structured framework for understanding it. The response was a project-based, cross-curricular elective that pulled from <strong>Digital Literacy (MA DLCS)</strong>, <strong>Media Literacy</strong>, <strong>U.S. and Civic History</strong>, <strong>ELA</strong>, <strong>ESL/ELD</strong>, and <strong>WIDA English Language Development standards</strong> — not because it was designed to hit every framework, but because real inquiry about media, truth, and power naturally crosses all of those lines.</p>
+          <p style="font-size: 13px; color: #333; margin-bottom: 10px; line-height: 1.65;">The course ran as a co-taught elective available BPS-wide through <strong>Campus Without Walls</strong>, serving multilingual learners alongside native English speakers in a shared production environment. Content creation was the vehicle: students didn't analyze media in the abstract — they built a newsroom, recorded and published podcasts, shot and edited video, designed merchandise, and co-built digital tools. Student interest drove unit selection. The field trips were not add-ons; they were primary sources.</p>
+          <p style="font-size: 13px; color: #333; margin: 0; line-height: 1.65;">What follows is an honest standards crosswalk. This was a <em>Media &amp; Digital Literacy elective</em>, not a Computer Science fundamentals course — so some DLCS strands are strong, some are partial, and some are named gaps that belong in the next phase.</p>
+        </div>
+        <p style="font-size: 13px; color: #555; margin-bottom: 6px;">Full crosswalk against MA DLCS Grades 9–12. This course runs on two strands: <strong>Computing &amp; Society (CAS)</strong> and <strong>Digital Tools &amp; Collaboration (DTC)</strong>.</p>
+        <p style="font-size: 12px; color: #888; margin-bottom: 16px; font-style: italic;">Standards not covered here are flagged for Phase 2 (BPS Digital Literacy scope expansion) and directly inform what the next iteration needs to build.</p>
+
+        <p style="font-size: 12px; font-weight: 700; color: #0d1b3e; letter-spacing: 0.5px; margin-bottom: 8px; margin-top: 4px; text-transform: uppercase;">Computing &amp; Society (CAS)</p>
+        <table style="margin-bottom: 20px;">
+          <thead>
+            <tr>
+              <th>Standard</th>
+              <th>Description</th>
+              <th>Coverage</th>
+              <th>How It Appeared</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CAS.b.2</strong></td>
+              <td>Evaluate social, cultural, and political impacts of technology</td>
+              <td><span class="badge strong">Strong</span></td>
+              <td>The spine of the entire course. Units 1–3, 6, 7 all build toward this; field trips to the Kennedy Institute, JFK Library, Old South Meeting House, and Boston Tea Party Museum grounded it in primary-source history</td>
+            </tr>
+            <tr>
+              <td><strong>CAS.c.3</strong></td>
+              <td>Analyze how media can be manipulated to affect beliefs and behaviors</td>
+              <td><span class="badge strong">Strong</span></td>
+              <td>Unit 1 (ad deconstruction, ethos/pathos/logos), Unit 2 (SIFT method, lateral reading, "One Story Two Realities" podcast), Unit 3 (propaganda across historical periods), Unit 6 (investigative journalism ethics)</td>
+            </tr>
+            <tr>
+              <td><strong>CAS.a.2</strong></td>
+              <td>Safe practices when collaborating online</td>
+              <td><span class="badge partial">Partial</span></td>
+              <td>Unit 4 addressed digital wellness, consent waivers, and publishing responsibility. Online safety protocols were embedded in practice but not a standalone explicit unit</td>
+            </tr>
+            <tr>
+              <td>Cybersecurity &amp; data protection</td>
+              <td>Passwords, authentication, data privacy, platform data collection</td>
+              <td><span class="badge gap">Not covered</span></td>
+              <td>How platforms collect and monetize user data, password hygiene, and authentication were not addressed — planned for Phase 2</td>
+            </tr>
+            <tr>
+              <td>Algorithm &amp; recommendation literacy</td>
+              <td>How algorithms curate feeds, filter content, and shape exposure</td>
+              <td><span class="badge gap">Not covered</span></td>
+              <td>Adjacent to Units 1–2 (media manipulation) but algorithmic systems were not explicitly taught — a significant gap given the course's media criticism focus</td>
+            </tr>
+            <tr>
+              <td>Copyright, IP &amp; fair use</td>
+              <td>Intellectual property rights, Creative Commons, fair use in student media</td>
+              <td><span class="badge partial">Partial</span></td>
+              <td>Implied through podcast publishing, YouTube uploads, and consent/waiver process. Not explicitly taught as a standalone unit — students used royalty-free assets without formal IP instruction</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size: 12px; font-weight: 700; color: #0d1b3e; letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase;">Digital Tools &amp; Collaboration (DTC)</p>
+        <table style="margin-bottom: 20px;">
+          <thead>
+            <tr>
+              <th>Standard</th>
+              <th>Description</th>
+              <th>Coverage</th>
+              <th>How It Appeared</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DTC.a.5</strong></td>
+              <td>Create an artifact that answers a research question and cites sources</td>
+              <td><span class="badge strong">Strong</span></td>
+              <td>Every major project: "One Story Two Realities" podcast (Unit 2), PSA campaigns (Unit 4), student newsroom segments (Unit 5), investigative journalism pieces (Unit 6), final media showcase (Unit 9) — all cited, all published</td>
+            </tr>
+            <tr>
+              <td><strong>DTC.b.2</strong></td>
+              <td>Use digital tools to collaborate with others in different contexts</td>
+              <td><span class="badge strong">Strong</span></td>
+              <td>Newsroom role rotations (anchor, editor, researcher, social media manager); Podtrak P4 + Shure mic audio production; WeVideo and iMovie video editing; Canva and Google Workspace across all units; Berklee College partnership for sound/storytelling</td>
+            </tr>
+            <tr>
+              <td><strong>DTC.a.3</strong></td>
+              <td>Evaluate digital tools for efficiency and effectiveness</td>
+              <td><span class="badge strong">Strong</span></td>
+              <td>Students chose tools by project need: Audacity vs. GarageBand for audio, WeVideo vs. iMovie for video, Podbean vs. Spotify for Creators for distribution. PolyCam cameras, green screen, and the Podtrak P4 required hardware evaluation before every shoot</td>
+            </tr>
+            <tr>
+              <td><strong>DTC.b.3</strong></td>
+              <td>Manage and resolve conflicts in digital collaborations</td>
+              <td><span class="badge strong">Strong</span></td>
+              <td>The newsroom inaccuracy incident was the course's sharpest moment: students published wrong content, then had to correct it publicly. They became the source of the problem they spent months studying. Real stakes, real resolution</td>
+            </tr>
+            <tr>
+              <td>Coding / computational thinking</td>
+              <td>Programming concepts, iterative design, algorithmic logic</td>
+              <td><span class="badge partial">Partial</span></td>
+              <td>Word Quest (morphology game co-built with students on readflexes.com via vibe-coding) and the French Survival Guide website introduced iterative design and user-feedback loops. Not a standalone CS unit — a media-literacy entry point into building with AI</td>
+            </tr>
+            <tr>
+              <td>Accessibility in digital design</td>
+              <td>Designing for users with disabilities; alt text, captions, contrast standards</td>
+              <td><span class="badge gap">Not covered</span></td>
+              <td>Not addressed in this iteration — a meaningful gap given the course's publication of public-facing media</td>
+            </tr>
+            <tr>
+              <td>Computing fundamentals</td>
+              <td>Networks, hardware, operating systems, data storage</td>
+              <td><span class="badge gap">Not covered</span></td>
+              <td>Out of scope for a media literacy elective — addressed directly in the BPS Digital Literacy Phase 2 scope</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="standards">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">WIDA ELD Standards<br><span style="font-size:9px;opacity:0.6;font-weight:400;">English Language Development · Embedded Throughout</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <p style="font-size:13px;color:#555;margin-bottom:14px;">All students in this course were multilingual learners (WIDA 3.0–4.2). ELD standards were embedded throughout, not taught as a separate strand.</p>
+        <table>
+          <thead><tr><th>Standard</th><th>Description</th><th>Coverage</th><th>How It Appeared</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ELD 1</strong></td><td>Social &amp; Instructional Language</td><td><span class="badge strong">Strong</span></td><td>Academic discussion, newsroom role vocabulary, presentation skills across all units; sentence frames and bilingual vocabulary sheets (EN/ES, EN/PT) in every unit</td></tr>
+            <tr><td><strong>ELD 2</strong></td><td>Language of Language Arts</td><td><span class="badge strong">Strong</span></td><td>Reading informational texts and media, writing podcast scripts, PSAs, and investigative pieces; genre-specific academic language throughout</td></tr>
+            <tr><td><strong>ELD 5</strong></td><td>Language of Social Studies</td><td><span class="badge strong">Strong</span></td><td>Civic vocabulary, primary source analysis, propaganda and protest language in Units 3 and 6; Boston field trips grounded abstract concepts in place</td></tr>
+            <tr><td><strong>ELD 4</strong></td><td>Language of Science</td><td><span class="badge gap">Not targeted</span></td><td>Outside the scope of this course</td></tr>
+            <tr><td><strong>ELD 3</strong></td><td>Language of Mathematics</td><td><span class="badge gap">Not targeted</span></td><td>Outside the scope of this course</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="standards">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">MA ELA / History &amp; Social Science<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Reading · Writing · Speaking · Civic Knowledge</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <table>
+          <thead><tr><th>Standard</th><th>Area</th><th>Coverage</th><th>How It Appeared</th></tr></thead>
+          <tbody>
+            <tr><td><strong>RI.11-12.1</strong></td><td>Reading — cite strong textual evidence; distinguish what the text says vs. inferences</td><td><span class="badge strong">Strong</span></td><td>Every written and spoken project required source citation; SIFT method trained students to trace claims back to primary sources</td></tr>
+            <tr><td><strong>RI.11-12.4</strong></td><td>Reading — determine meaning of words and phrases, including figurative/connotative; analyze word choice</td><td><span class="badge strong">Strong</span></td><td>Bilingual vocabulary sheets (EN/ES, EN/PT) in every unit; media literacy vocabulary (bias, propaganda, ethos, disinformation) built explicitly across Units 1–3</td></tr>
+            <tr><td><strong>RI.11-12.6</strong></td><td>Reading — point of view, rhetoric, purpose</td><td><span class="badge strong">Strong</span></td><td>Ad analysis, ethos/pathos/logos, bias chart work in Units 1–3; students identified rhetorical choices in historical and contemporary media</td></tr>
+            <tr><td><strong>RI.11-12.7</strong></td><td>Reading — integrate multiple sources in diverse formats and media</td><td><span class="badge strong">Strong</span></td><td>Units 1, 2, and 6: comparing print, audio, and video coverage of the same events; SIFT method applied across formats</td></tr>
+            <tr><td><strong>RI.11-12.8</strong></td><td>Reading — evaluate arguments, assess reasoning, detect fallacies</td><td><span class="badge strong">Strong</span></td><td>Fact-checking and source evaluation in Unit 2; propaganda analysis in Unit 3; newsroom ethics in Unit 6</td></tr>
+            <tr><td><strong>W.11-12.1</strong></td><td>Writing — argument with evidence and counterargument</td><td><span class="badge strong">Strong</span></td><td>PSA campaigns (Unit 4), opinion segments in the newsroom, bias analysis writing</td></tr>
+            <tr><td><strong>W.11-12.2</strong></td><td>Writing — informative/explanatory texts</td><td><span class="badge strong">Strong</span></td><td>Podcast scripts, investigative pieces, digital portfolios — all required researched, cited explanatory writing</td></tr>
+            <tr><td><strong>W.11-12.6</strong></td><td>Writing — use technology to produce, publish, and collaborate</td><td><span class="badge strong">Strong</span></td><td>Google Docs co-writing, WeVideo collaborative editing, Canva shared design — publishing workflows built into every project</td></tr>
+            <tr><td><strong>W.11-12.7</strong></td><td>Writing — short and sustained research projects</td><td><span class="badge strong">Strong</span></td><td>Unit 2 (fact-checking a real news story), Unit 6 (investigative journalism project), Unit 7 (oral history research)</td></tr>
+            <tr><td><strong>W.11-12.8</strong></td><td>Writing — gather relevant information from multiple sources; evaluate credibility</td><td><span class="badge strong">Strong</span></td><td>SIFT method was the explicit framework for this across Units 1, 2, and 6; students practiced lateral reading and source triangulation</td></tr>
+            <tr><td><strong>SL.11-12.1</strong></td><td>Speaking &amp; Listening — collaborative discussion; build on others' ideas</td><td><span class="badge strong">Strong</span></td><td>Newsroom role rotations required daily spoken collaboration; Socratic-style media analysis discussions ran throughout Units 1–4</td></tr>
+            <tr><td><strong>SL.11-12.3</strong></td><td>Speaking &amp; Listening — evaluate a speaker's point of view, reasoning, and use of evidence</td><td><span class="badge strong">Strong</span></td><td>Students analyzed podcasts, news anchors, and speeches for credibility and rhetorical technique across Units 1, 2, and 5</td></tr>
+            <tr><td><strong>SL.11-12.4 / SL.11-12.5</strong></td><td>Speaking &amp; Listening — present information, make strategic use of digital media</td><td><span class="badge strong">Strong</span></td><td>Podcast recording, news anchor scripts, green screen segments, digital portfolio presentations</td></tr>
+            <tr><td><strong>L.11-12.6</strong></td><td>Language — acquire and use academic and domain-specific vocabulary</td><td><span class="badge strong">Strong</span></td><td>Explicit vocabulary instruction in every unit; media literacy terminology (bias, disinformation, ethos, algorithm, propaganda) assessed in projects; bilingual glossaries supported acquisition</td></tr>
+            <tr><td><strong>W.11-12.5</strong></td><td>Writing — develop and strengthen writing through planning, revising, and editing</td><td><span class="badge partial">Partial</span></td><td>Podcast scripting included drafting and revision cycles; formal writing revision protocols were inconsistently applied given attendance and pacing pressures</td></tr>
+            <tr><td><strong>HSS — Civic Knowledge</strong></td><td>History &amp; Social Science — civic participation, rights, public discourse</td><td><span class="badge strong">Strong</span></td><td>Unit 3 compared BLM and the Boston Tea Party as protest media; field trips to Old South Meeting House, Tea Party Museum, Kennedy Institute grounded civic concepts in place</td></tr>
+            <tr><td><strong>HSS — Analyzing Primary Sources</strong></td><td>History &amp; Social Science — evaluating historical evidence</td><td><span class="badge strong">Strong</span></td><td>Propaganda posters, colonial pamphlets, news footage — students used historian methods to analyze sourcing, audience, and intent across Units 3 and 6</td></tr>
+            <tr><td><strong>HSS — Media's Role in History</strong></td><td>History &amp; Social Science — communication technology and society</td><td><span class="badge partial">Partial</span></td><td>Covered in Units 1–3 through the lens of protest and persuasion; broader media history arc was abbreviated due to time and attendance constraints</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="standards">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">ISTE Standards for Students<br><span style="font-size:9px;opacity:0.6;font-weight:400;">International Society for Technology in Education</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <p style="font-size:13px;color:#555;margin-bottom:14px;">The ISTE Standards describe what students should know and do with technology. Several align directly with this course's project-based structure.</p>
+        <table>
+          <thead><tr><th>Standard</th><th>Description</th><th>Coverage</th><th>How It Appeared</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1.2 Digital Citizen</strong></td><td>Recognize rights, responsibilities, and opportunities in a digital world; act safely, legally, and ethically</td><td><span class="badge strong">Strong</span></td><td>Digital footprint, attribution, copyright, consent and waiver process, online safety — woven across all units; Unit 4 addressed it directly</td></tr>
+            <tr><td><strong>1.3 Knowledge Constructor</strong></td><td>Curate information from digital resources; evaluate accuracy and perspective</td><td><span class="badge strong">Strong</span></td><td>SIFT method, lateral reading, source triangulation in Units 1, 2, and 6; students built knowledge bases for investigative and research projects</td></tr>
+            <tr><td><strong>1.6 Creative Communicator</strong></td><td>Communicate clearly and express themselves creatively for a variety of purposes using platforms, tools, styles, and formats</td><td><span class="badge strong">Strong</span></td><td>Podcasts, PSAs, news segments, oral histories, digital portfolios — students chose formats and produced for real audiences across the year</td></tr>
+            <tr><td><strong>1.7 Global Collaborator</strong></td><td>Use digital tools to broaden perspectives and work collaboratively with others</td><td><span class="badge strong">Strong</span></td><td>Newsroom role rotations, WeVideo co-editing, shared Google Workspace production — collaboration was built into the structure of every major project</td></tr>
+            <tr><td><strong>1.4 Innovative Designer</strong></td><td>Use a design process to identify problems, develop solutions, build prototypes, and iterate</td><td><span class="badge partial">Partial</span></td><td>Building the media lab, Cricut/sublimation design projects, and studio setup involved iterative design thinking; formal design-process documentation was inconsistent</td></tr>
+            <tr><td><strong>1.1 Empowered Learner</strong></td><td>Set goals, use technology to learn, seek feedback, and demonstrate competency</td><td><span class="badge partial">Partial</span></td><td>Students selected tools and directed their own projects in Units 5–9; structured goal-setting and self-assessment protocols were applied unevenly</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="studio">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div id="bay-studio" class="disk-label">Media Studio &amp; Equipment<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Student-Built Production Space · Gear &amp; Tech Stack</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <p style="margin-bottom:16px;">The studio was built collaboratively with students. Before finalizing the setup, students and teacher visited <strong>Boston Green Academy</strong> to study their production space, then brought those ideas back to Mary Lyon. Every design decision became part of the curriculum.</p>
+        <div class="studio-grid">
+          <div class="studio-card"><div class="studio-card-label">Audio Studio</div><div class="studio-items"><span class="studio-item">Zoom Corp Podtrak P4 podcasting mixer</span><span class="studio-item">Shure microphones (studio recording setup)</span><span class="studio-item">Wireless microphones for field interviews</span><span class="studio-item">DIY soundproofing using acoustic foam panels</span><span class="studio-item">Audio editing and post-production software</span><span class="studio-item">Podcast published on Spotify</span></div></div>
+          <div class="studio-card"><div class="studio-card-label">Video Production</div><div class="studio-items"><span class="studio-item">PolyCam cameras</span><span class="studio-item">iPads (video recording, audio capture, notes)</span><span class="studio-item">Green screen for news segments, shorts &amp; ads</span><span class="studio-item">Ring lights and professional lighting setups</span><span class="studio-item">iMovie and video editing software</span><span class="studio-item">Videos edited and published to YouTube</span></div></div>
+          <div class="studio-card"><div class="studio-card-label">Design &amp; Print</div><div class="studio-items"><span class="studio-item">Cricut (stickers, vinyl decals, class graphics)</span><span class="studio-item">HTV automatic heat transfer press (shirts)</span><span class="studio-item">Cricut Mug Maker</span><span class="studio-item">Sublimation press (t-shirts and mugs)</span><span class="studio-item">Canva (ads, thumbnails, digital design)</span></div></div>
+          <div class="studio-card"><div class="studio-card-label">Digital Publishing</div><div class="studio-items"><span class="studio-item">Google Workspace (Docs, Slides, Drive)</span><span class="studio-item">Spotify (podcast distribution and analytics)</span><span class="studio-item">YouTube (video publishing, channel management)</span><span class="studio-item">WeVideo (collaborative video editing)</span><span class="studio-item">Pear Deck (interactive instruction)</span></div></div>
+        </div>
+        <div class="studio-photos">
+          <div class="photo-tile"><img src="green-screen.jpg" alt="Students filming with the green screen setup" style="object-position:center 18%;"><div class="photo-tile-label">Green screen · news segments &amp; shorts</div></div>
+          <div class="photo-tile"><img src="cricut.jpg" alt="Cricut Mug Maker and vinyl cutter in use" style="object-position:center 40%;"><div class="photo-tile-label">Cricut · vinyl &amp; mug design</div></div>
+          <div class="photo-tile"><img src="cricut2.jpg" alt="Student working with Cricut cutter" style="object-position:center 32%;"><div class="photo-tile-label">Student-designed mugs</div></div>
+        </div>
+        <div class="studio-note">The studio was a learning environment, not just a production space. Students built it, arranged it, and understood why it worked the way it did.</div>
+        <div class="studio-photos-mugs">
+          <div class="photo-tile"><img src="mug.jpg?v=3" alt="Mary Lyon Podcast branded mug" style="object-position:center center;"><div class="photo-tile-label">ML Podcast mug · sublimation print</div></div>
+          <div class="photo-tile"><img src="mug2.jpg?v=3" alt="Student-designed mug" style="object-position:center center;"><div class="photo-tile-label">Custom design · Cricut Mug Maker</div></div>
+        </div>
+        <p class="partners">Community partnerships: Facing History &amp; Ourselves · Dove Confident Me · NewsHour Classroom · NPR Student Podcast Challenge · Boston Revolutionary Sites · Berklee College of Music</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="studio">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">Word Quest &amp; Morphology Games<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Collaborative Game Lab · Student-Built Tools</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <h3 style="color:#0d1b3e;font-size:18px;margin-bottom:16px;">From "Boring" to Engaging: Vibecoding Morphology with Students</h3>
+        <p style="margin-bottom:14px;"><strong>The Problem:</strong> Morphology was a school QSP priority and a core literacy standard. But seniors found traditional ISME morphology lessons felt "for kids" and lacked engagement.</p>
+        <p style="margin-bottom:14px;"><strong>The Solution:</strong> We co-designed <strong>Word Quest for the Stolen Bunny</strong> — an interactive morphology adventure where students navigate different lands to learn prefixes, suffixes, Latin and Greek roots, and solve morphology challenges through mini-games.</p>
+        <p style="margin-bottom:14px;"><strong>The Build:</strong> It was vibecoding. We started with a framework, asked students for feedback on mechanics and difficulty, and iterated together.</p>
+        <p style="margin-bottom:14px;"><strong>The Mechanics:</strong> Students walk through Prefix Forest, Suffix Swamp, Root Ruins, and more — answering morphology questions, collecting "spell components," and competing in word-building races.</p>
+        <p style="margin-bottom:20px;"><strong>Student-Built Games:</strong> Word Quest inspired students to build their own morphology games. Some created flashcard challenges; others built racing games. These peer-designed tools became tools other students actually used to study.</p>
+        <div style="background:#fffbeb;border-left:4px solid #e8b84b;padding:16px;border-radius:0 4px 4px 0;margin:20px 0;">
+          <p style="font-size:13px;color:#333;margin:0;"><strong>Try Word Quest:</strong> <a href="https://readflexes.wordquest.com" target="_blank" class="text-link">readflexes.wordquest.com ↗</a><br><span style="font-size:12px;color:#666;">A live prototype of the morphology game, built collaboratively and refined through student feedback.</span></p>
+        </div>
+        <h4 style="color:#0d1b3e;font-size:15px;margin-top:24px;margin-bottom:12px;">Why This Matters</h4>
+        <ul style="font-size:13px;color:#333;padding-left:20px;line-height:1.6;">
+          <li><strong>Responds to student voice:</strong> Instead of accepting "this is boring," we asked why and redesigned together.</li>
+          <li><strong>Makes morphology stick:</strong> Game-based repetition, spaced recall, and immediate feedback — all research-backed for vocabulary retention.</li>
+          <li><strong>Meets the QSP goal:</strong> Addresses the school's academic growth priority (morphology) in a way that actually engages multilingual learners.</li>
+          <li><strong>Peer-to-peer learning:</strong> Students who built games became teachers; students who played became game designers.</li>
+          <li><strong>Portable and replicable:</strong> Word Quest works standalone; the vibe-coding process can be applied to any grammar or vocabulary unit.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="standards">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">CASEL SEL &amp; BPS Health &amp; Wellness<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Social-Emotional Learning · Dove Confident Me</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <p style="font-size:13px;color:#555;margin-bottom:14px;">Unit 4 (Digital Health &amp; Body Image) was built directly on the BPS Office of Health &amp; Wellness curriculum and the Dove Confident Me program. SEL competencies ran across Unit 4 and Unit 8 (personal narrative). The Facing History &amp; Ourselves partnership also contributed an SEL lens throughout Units 1 and 3.</p>
+        <table>
+          <thead><tr><th>Framework / Standard</th><th>Description</th><th>Coverage</th><th>How It Appeared</th></tr></thead>
+          <tbody>
+            <tr><td><strong>CASEL — Self-Awareness</strong></td><td>Identify emotions, values, and how they shape behavior; recognize strengths and limitations</td><td><span class="badge strong">Strong</span></td><td>Unit 4 (body image, identity, and media influence) and Unit 8 (personal narrative audio memoir) both asked students to examine their own relationship to media and self-image</td></tr>
+            <tr><td><strong>CASEL — Social Awareness</strong></td><td>Take the perspective of others; recognize broader social/cultural context; show empathy</td><td><span class="badge strong">Strong</span></td><td>Facing History partnership (Units 1 and 3), BLM vs. Tea Party comparison, oral history interviews (Unit 7) — the course consistently asked students to consider whose voice is centered and whose is absent</td></tr>
+            <tr><td><strong>CASEL — Responsible Decision-Making</strong></td><td>Make constructive, ethical choices about personal behavior and interactions</td><td><span class="badge strong">Strong</span></td><td>Publishing consent and waiver process, newsroom accuracy failure and its fallout, social media and mental health discussion in Unit 4 — students made real decisions with real stakes</td></tr>
+            <tr><td><strong>CASEL — Self-Management</strong></td><td>Manage emotions and behaviors; set and work toward goals; handle stress</td><td><span class="badge partial">Partial</span></td><td>Screen time, digital boundaries, and stress around social media in Unit 4; informal self-management skills came up throughout the year but were not a formal learning objective</td></tr>
+            <tr><td><strong>BPS Health — Digital Wellness</strong></td><td>Understand the relationship between technology use and mental/emotional health</td><td><span class="badge strong">Strong</span></td><td>Unit 4 used BPS Office of Health &amp; Wellness curriculum directly; students examined screen time, body image in media, social comparison, and digital boundaries</td></tr>
+            <tr><td><strong>Dove Confident Me</strong></td><td>Body image, appearance ideals, media influence on self-esteem</td><td><span class="badge strong">Strong</span></td><td>Partner curriculum integrated into Unit 4; students analyzed advertising, airbrushing, and appearance-based messaging with structured reflection activities</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="outcomes">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div id="bay-outcomes" class="disk-label">How It Went — Results &amp; Moments<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Outcomes · Artifacts · Teaching Moments</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <div class="callout red">
+          <div class="callout-label">Context: School Closure</div>
+          <p>Mary Lyon Pilot High School was designated for closure during the year this course ran. Many of the students most invested in the media studio transferred out as the closure process unfolded. Despite the disruption, Broadcasting &amp; Media Literacy was the most popular elective in the building: nearly every senior enrolled, with the only exception being students committed to Early College coursework at RCC.</p>
+        </div>
+        <div class="spotify-card">
+          <div class="spotify-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.434-5.305-1.76-8.786-.963-.335.077-.67-.133-.746-.469-.077-.336.132-.67.469-.746 3.809-.871 7.077-.496 9.713 1.115.293.18.386.563.207.856zm1.223-2.723c-.226.367-.706.482-1.072.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.127-.848-.105-.973-.517-.125-.413.108-.848.52-.973 3.632-1.102 8.147-.568 11.233 1.328.366.226.48.707.257 1.071zm.105-2.835c-3.223-1.914-8.54-2.09-11.618-1.156-.494.15-1.017-.129-1.166-.623-.149-.495.13-1.018.623-1.167 3.535-1.073 9.409-.866 13.115 1.338.445.264.590.837.327 1.282-.264.443-.838.59-1.281.326z"/></svg></div>
+          <div class="spotify-body">
+            <div class="spotify-label">Student Artifact — Podcast Pilot Episode</div>
+            <div class="spotify-title">The AI Revolution</div>
+            <div class="spotify-meta">Mary Lyon Pilot High School · Published on Spotify</div>
+            <a href="https://open.spotify.com/episode/54miOx1WvxjUBF6ob1NlfB?si=LwWky_1wSr-cdUUfB5rjGQ" target="_blank" class="spotify-btn">▶ Listen on Spotify</a>
+          </div>
+          <div class="spotify-desc">Students researched, scripted, recorded, and published this episode independently — a public-facing artifact produced with newsroom skills built across the course.</div>
+        </div>
+        <figure class="podcast-screenshot">
+          <img src="Podcast screenshot.png" alt="Mary Lyon students recording in the podcast studio">
+          <figcaption>Mary Lyon students in the podcast studio</figcaption>
+        </figure>
+        <div class="callout gold">
+          <div class="callout-label">The Newsroom Moment</div>
+          <p>When students launched the Mary Lyon student newsroom, the content they produced was inaccurate. In a year defined by national debate over misinformation, that became the course's most significant teaching moment. Students had to reckon with the fact that they had become the source of the problem they spent months studying. That moment is the course in one story.</p>
+        </div>
+        <div class="callout blue">
+          <div class="callout-label">Multilingual Learner Design</div>
+          <p>MLL design was built into the course from day one. Every unit included bilingual vocabulary sheets (English/Spanish, English/Portuguese), sentence frames, visual rubrics, and co-teaching structures. A <a href="https://docs.google.com/presentation/d/1Kz7pV7M_R9g2FnEGbqchQXXI2z99pG1f5pzXqh9nbuQ/edit?usp=drive_link" target="_blank" class="text-link">full co-teaching alignment guide</a> mapping every unit to DESE MLL Look-Fors was developed alongside the curriculum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="standards-section" data-bay-group="outcomes">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">What's Missing &amp; What's Next<br><span style="font-size:9px;opacity:0.6;font-weight:400;">Gap Analysis · Phase 2 &amp; 3 Vision</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <div class="chart-embed">
+          <div class="chart-embed-text">
+            <p>Working simultaneously as the Multilingual Specialist for the RCC Early College Consortium, the same students who excelled in media literacy arrived at Roxbury Community College struggling with basic computing tasks: file management, using a learning management system, formatting a document for submission. The course produced strong critical thinkers. Foundational computer skills were a different story.</p>
+            <p>The RCC Early College program analysis documents this directly. Students who arrived without basic digital skills faced avoidable barriers in ENG 101. Media literacy gets students asking the right questions. It does not get them through a college file upload. That finding shapes what this course becomes next.</p>
+          </div>
+          <img src="rcc-tech-barriers.png" alt="Technology Barriers Reported by Students — RCC Early College data showing 75% struggled with MyRCC login, 25% with Google Docs">
+        </div>
+        <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#0d1b3e;margin:24px 0 12px;border-top:2px solid #e8eaf0;padding-top:20px;">Where It Goes Next</div>
+        <div class="future-grid">
+          <div class="future-card"><div class="future-label">Phase 2 — Foundational Tech</div><p>Add computing fundamentals: file systems, hardware basics, navigating platforms, data literacy basics. The RCC data makes the case for why this matters for multilingual learners specifically.</p></div>
+          <div class="future-card"><div class="future-label">Phase 3 — AI Literacy</div><p>Integrate AI as a lens throughout: how algorithms shape what we see, how AI generates content, how to evaluate AI-produced media critically. Not a separate unit. Woven in.</p></div>
+          <div class="future-card"><div class="future-label">Full Course Vision</div><p>A complete, replicable BPS Digital Literacy curriculum for multilingual learner populations: documented outcomes, student artifacts, co-teaching model, and standards coverage across all DLCS strands.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- BAY 14: BEYOND THE CLASSROOM — FRANCE TRIP -->
+  <span id="france"></span>
+  <div class="standards-section" data-bay-group="resources">
+    <div class="accordion-header">
+      <div class="disk-drive">
+        <div class="disk-drive-bezel">
+          <div class="disk-slot"><div class="disk-tray"></div></div>
+          <div class="disk-controls"><div class="disk-btn"></div><div class="disk-btn"></div></div>
+          <div class="disk-led"></div>
+        </div>
+        <div class="disk-label">Beyond the Classroom — Senior Trip to France<br><span style="font-size:9px;opacity:0.6;font-weight:400;">DL-14-FRANCE.DAT · Student Digital Guide · Paris &amp; London</span></div>
+      </div>
+      <div class="accordion-status">[ CLICK TO EJECT ]<span class="blink">█</span></div>
+      <div class="accordion-toggle">▼</div>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+        <div class="france-intro">
+          <div>
+            <p>As part of the senior year experience, led a group of Mary Lyon students on a trip to France. Built a digital student guide — a website where students could review everything they needed before and during the trip: French language essentials, packing checklists, cultural norms, daily itinerary, and behavior expectations. One reference students could open on their phones in Paris.</p>
+            <p>The guide drew directly from the trip's slide decks and planning documents, condensed into a format students would actually use. French language review was built in so students could practice key phrases before departure. For many students, this was their first international travel and first time navigating a country where English wasn't the default.</p>
+          </div>
+          <img src="eiffel-tower.png" alt="Paris travel guide illustration — Eiffel Tower">
+        </div>
+        <figure style="margin: 24px 0; text-align: center;">
+          <div style="display:inline-block; border-radius:10px; overflow:hidden; box-shadow: 0 4px 24px rgba(13,27,62,0.18); border: 1px solid #dde2ee; max-width: 100%;">
+            <div style="background:#e8eaf0; padding: 8px 12px; display:flex; align-items:center; gap:6px; border-bottom:1px solid #dde2ee;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#e87070;display:inline-block;"></span>
+              <span style="width:10px;height:10px;border-radius:50%;background:#e8c870;display:inline-block;"></span>
+              <span style="width:10px;height:10px;border-radius:50%;background:#70c870;display:inline-block;"></span>
+              <span style="font-size:11px;color:#888;margin-left:8px;font-family:monospace;">Paris &amp; London — French Survival Guide</span>
+            </div>
+            <img src="frenchguide.png" alt="Screenshot of the Paris &amp; London French Survival Guide student website" style="display:block; width:100%; max-width:860px;">
+          </div>
+          <figcaption style="font-size:11px;color:#888;margin-top:8px;">Student-facing digital guide — accessible on any phone during the trip</figcaption>
+        </figure>
+        <div class="callout gold">
+          <div class="callout-label">Why a Digital Guide</div>
+          <p>Rather than printing packets students might lose before boarding, the guide lived online: accessible from any phone, searchable, updatable if plans changed. Building it gave students a concrete example of digital literacy in practice — taking source material (slide decks, packing lists, behavior expectations) and restructuring it for a specific audience, format, and context.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /.tower-bay-housing -->
+    <div class="tower-vent-strip"></div>
+    <div class="tower-bottom-panel"></div>
+  </div><!-- /.tower-computer -->
+
+</div><!-- /.main -->
+
+<!-- RIGHT MARGIN COLUMN -->
+<div class="margin-col" aria-hidden="true">
+  <div class="margin-static"></div>
+  <div class="margin-illustrations">
+    <div class="margin-illus-item"><img src="vintage-mic.png" alt=""><span class="margin-illus-label">mic</span></div>
+    <div class="margin-illus-item"><img src="retro-camera.png" alt=""><span class="margin-illus-label">camera</span></div>
+    <div class="margin-illus-item"><img src="retro-tv.png" alt=""><span class="margin-illus-label">broadcast</span></div>
+    <div class="margin-illus-item"><img src="broadcast-console.png" alt=""><span class="margin-illus-label">console</span></div>
+    <div class="margin-illus-item"><img src="retro-computer.png" alt=""><span class="margin-illus-label">computer</span></div>
+  </div>
+</div>
+
+</div><!-- /.page-wrapper -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Zachary English · zenglish@bostonpublicschools.org · 781-351-3529</span>
+  <span>Fenway High School (SY 2026–2027) · June 2026</span>
+</div>
+
+<script>
+  // Tab group click — jump to first bay in that group (each bay opens/closes independently)
+  document.querySelectorAll('.tower-tab-group').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var group = this.dataset.group;
+      var firstBay = document.querySelector('[data-bay-group="' + group + '"]');
+      if (firstBay) {
+        firstBay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Show floating podcast logo after scrolling past the cover
+  (function() {
+    const logo = document.getElementById('floatingLogo');
+    const cover = document.querySelector('.cover');
+    function onScroll() {
+      const coverBottom = cover ? cover.getBoundingClientRect().bottom : 0;
+      if (coverBottom < 0) { logo.classList.add('visible'); }
+      else { logo.classList.remove('visible'); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.accordion-header');
+
+    function setStatus(header, open) {
+      const status = header.querySelector('.accordion-status');
+      if (!status) return;
+      if (open) {
+        status.innerHTML = '[ LOADED ]<span class="blink">█</span>';
+      } else {
+        status.innerHTML = '[ CLICK TO EJECT ]<span class="blink">█</span>';
+      }
+    }
+
+    // init: set status text for already-open accordions
+    headers.forEach(h => {
+      if (h.classList.contains('expanded')) setStatus(h, true);
+    });
+
+    const hddLed = document.getElementById('towerHddLed');
+    function flashHdd() {
+      if (!hddLed) return;
+      hddLed.classList.remove('active');
+      void hddLed.offsetWidth; // reflow to restart animation
+      hddLed.classList.add('active');
+      setTimeout(() => hddLed.classList.remove('active'), 2400);
+    }
+
+    headers.forEach(header => {
+      header.addEventListener('click', function() {
+        const body = this.nextElementSibling;
+        const isExpanded = this.classList.contains('expanded');
+
+        // allow multiple open — just toggle this one
+        this.classList.toggle('expanded');
+        body.classList.toggle('show');
+        setStatus(this, !isExpanded);
+
+        // flash HDD LED on the tower when a drive bay opens
+        if (this.closest('.tower-bay-housing')) flashHdd();
+      });
+    });
+
+    // Photo tile lightbox — click any tile to expand full-screen
+    // closest() guard: if the click lands on a button/link inside the tile, don't open
+    document.querySelectorAll('.photo-tile').forEach(tile => {
+      tile.addEventListener('click', function(e) {
+        if (e.target.closest('a, button')) return;
+        const img = this.querySelector('img');
+        const label = this.querySelector('.photo-tile-label');
+        if (!img) return;
+
+        const scrim = document.createElement('div');
+        scrim.className = 'photo-focus-scrim';
+
+        const big = document.createElement('img');
+        big.className = 'photo-focus-img';
+        big.src = img.src;
+        big.alt = img.alt || '';
+
+        scrim.appendChild(big);
+
+        if (label && label.textContent.trim()) {
+          const cap = document.createElement('div');
+          cap.className = 'photo-focus-caption';
+          cap.textContent = label.textContent.trim();
+          scrim.appendChild(cap);
+        }
+
+        document.body.appendChild(scrim);
+
+        function close() { scrim.remove(); }
+        scrim.addEventListener('click', close);
+        big.addEventListener('click', e => e.stopPropagation());
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); }, { once: true });
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
