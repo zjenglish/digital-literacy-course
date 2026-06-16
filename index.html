@@ -2459,6 +2459,89 @@
       background: #4ade80;
       box-shadow: 0 0 6px rgba(74,222,128,0.7);
     }
+
+    /* ════════════════════════════════════════
+       MOBILE — iOS + ANDROID (600px and under)
+       ════════════════════════════════════════ */
+    @media (max-width: 600px) {
+
+      /* layout */
+      .cover  { padding: 36px 18px 28px; }
+      .main   { padding: 28px 16px 36px; }
+      .footer { padding: 14px 16px; }
+
+      /* nav */
+      .sticky-nav { padding: 0 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .sticky-nav a { padding: 10px 10px; font-size: 10px; letter-spacing: 0.5px; }
+
+      /* cover hero */
+      .school-strip { height: 130px; }
+      .school-strip-overlay { padding: 0 16px; }
+      .cover-title    { font-size: clamp(22px, 7vw, 42px); }
+      .cover-subtitle { font-size: clamp(11px, 3.5vw, 16px); }
+
+      /* grids — all stack to 1 column */
+      .docs-grid          { grid-template-columns: 1fr; }
+      .studio-grid        { grid-template-columns: 1fr; }
+      .future-grid        { grid-template-columns: 1fr; }
+      .strands            { grid-template-columns: 1fr; }
+      .guide-grid         { grid-template-columns: 1fr; }
+      .chart-embed        { grid-template-columns: 1fr; }
+      .france-intro       { grid-template-columns: 1fr; }
+      .photo-gallery      { grid-template-columns: 1fr; gap: 10px; }
+      .studio-photos      { grid-template-columns: 1fr; }
+      .studio-photos-mugs { grid-template-columns: 1fr 1fr; }
+
+      /* tables — horizontal scroll wrapper */
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+
+      /* accordion header — tighten for narrow screens */
+      .accordion-header { flex-wrap: wrap; min-height: 56px; padding: 10px 12px; gap: 8px; }
+      .disk-drive       { flex-shrink: 0; }
+      .disk-label       { font-size: 13px; line-height: 1.4; }
+      .accordion-status { font-size: 8px; }
+      .accordion-toggle { margin-left: auto; }
+
+      /* tower top panel */
+      .tower-wrap         { padding: 0 8px; }
+      .tower-computer     { margin: 32px 0 24px; }
+      .tower-top-panel    { padding: 12px 10px 14px; gap: 8px; }
+      .tower-brand-plate  { padding: 7px 10px; gap: 5px; }
+      .tower-brand-sub    { font-size: 11px; letter-spacing: 1px; }
+      .tower-model-num    { font-size: 10px; }
+      .tower-badge-img    { height: 38px; }
+      .tower-power-btn    { width: 30px; height: 40px; }
+      .tower-reset-btn    { width: 18px; height: 24px; }
+      .tower-speaker-grille { width: 36px; height: 36px; }
+      .tower-floppy-bay   { width: 52px; }
+      .tower-slideshow-btn { width: 44px; height: 40px; }
+      .tower-display      { margin: 0 8px 10px; }
+      .tower-display-header { font-size: 7px; letter-spacing: 1px; padding: 5px 8px; }
+      .tower-tab-grid     { grid-template-columns: 1fr 1fr; gap: 6px; padding: 8px; }
+      .disk-drive-bezel   { width: 54px; height: 38px; }
+
+      /* hide decorative elements that overflow on mobile */
+      .vtube       { display: none; }
+      .tower-wires { display: none; }
+
+      /* slideshow */
+      .slideshow-img-wrap     { max-width: 95vw; max-height: 55vh; }
+      .slideshow-img-wrap img { max-width: 95vw; max-height: 55vh; }
+      .slideshow-controls     { gap: 8px; flex-wrap: wrap; justify-content: center; }
+      .slideshow-ctrl-btn     { padding: 8px 10px; font-size: 10px; }
+      .slideshow-header       { font-size: 8px; letter-spacing: 1.5px; }
+      .filmstrip-dot          { width: 10px; height: 10px; }
+
+      /* group dividers */
+      .bay-group-divider       { padding: 5px 10px; }
+      .bay-group-divider-label { font-size: 7px; letter-spacing: 1.5px; padding: 2px 7px; }
+    }
+
+    /* touch devices — always show photo tile labels (no hover on mobile) */
+    @media (hover: none) {
+      .photo-tile-label { opacity: 1; }
+      .photo-tile:active img { transform: scale(1.03); filter: brightness(1); }
+    }
   </style>
 </head>
 <body>
